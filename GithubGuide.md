@@ -2,7 +2,7 @@ Shreddit GitHub Guide
 
 Say you want to do some work on the project. Here's what to do:
 
-1. cd into the DnD-Campaign directory.
+1. cd into the Shreddit directory.
 2. `git pull` so that your local master is synced up with the remote master.
 3. Create and check out a new branch from your local master with `git checkout -b [branchName]`
     - Make sure that you name your branch after the feature you're working on. That way it will be clear during pull requests what features are being merged.
