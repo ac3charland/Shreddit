@@ -13,7 +13,7 @@
         "build": "cd client && npm run build",
         "heroku-postbuild": "npm run build"
     },
-    "author": "",
+    "author": "Alex Charland <ac3charland@gmail.com>",
     "license": "ISC",
     "devDependencies": {
         "concurrently": "^3.5.0",
@@ -22,7 +22,8 @@
     "dependencies": {
         "axios": "^0.16.2",
         "express": "^4.16.3",
-        "mongoose": "^5.0.17",
-        "if-env": "^1.0.4"
-    }
+        "if-env": "^1.0.4",
+        "mongoose": "^5.0.17"
+    },
+    "repository": "git@github.com:ac3charland/Shreddit.git"
 }
