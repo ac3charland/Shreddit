@@ -2,6 +2,7 @@
 |--------|------|------|---------|------------|----------------------------------------|
 | GET    | /    | HTML | -       | index.html | Returns index.html for display to page |
 | GET    | /api/posts | Data  | -   | [Posts] | Returns json containing several posts for display on the front page with comments joined |
+| GET    | /api/posts/:postId | Data | :postId | Post Object | Returns json containing a post, joined with its associated comments |
 | GET    | /api/users/:userId    | Data  | :userId  | User Object | Returns the user's data to the page (Posts, Username, potentially up/downvoted posts, posted comments) |
 | POST   | /api/posts | Data  | Post Object  | -    | Sends a new post to the DB |
 | PUT    | /api/posts/:postId | Data | :postId, Updated Post Obj | - | Sends an updated post to replace the one in the DB with the given id |
