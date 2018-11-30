@@ -1,10 +1,10 @@
-## (Rough) Project Schedule
+## Project Schedule
 
 ### Friday
 - **Plan Due**
-- Set up server
-- Create DB Models
-- Set up passport
+- Set up server (Matt/Alex)
+- Create DB Models (Matt)
+- Set up passport (Max)
 - Create basic frontend components
 	- Header (Mary)
 	- Banner (Mary)
@@ -22,11 +22,12 @@
 - Get server working if not already
 
 ### Monday
-1. Assemble components into feed page
-2. Get data from DB displaying on frontend
-3. Assemble components into create page
-3. Assemble components into individual post page (with comments, etc.)
-4. Assemble components into user page
+Order of priority:
+1. Assemble components into feed page (Melissa)
+2. Get data from DB displaying on frontend (Max/Matt/Alex)
+3. Assemble components into creation page (Mary)
+3. Assemble components into individual post page (with comments, etc.) (Don)
+4. Assemble components into user page (Melissa)
 
 ### Tuesday
 - **MVP Due**
@@ -36,6 +37,7 @@
 ### Wednesday
 - Creating minimum working product if not done
 - (Stretch goals)
+- Refine style
 
 ### Thursday
 - **Finished project due**
