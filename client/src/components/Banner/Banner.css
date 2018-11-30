@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.site-banner {
+    flex: 0 0 auto;
+    max-height: 33.3%;
+    border-style: none none solid none;
+    border-color: darkslategrey;
+}
