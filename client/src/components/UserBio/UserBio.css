@@ -1,0 +1,9 @@
+.profileImg {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15px;
+}
+.info {
+    padding: 10px;
+}
