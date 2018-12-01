@@ -17,14 +17,13 @@ class Navbar extends React.Component {
     }
 
     render() {
-        const logger = this.state.loggedin;
         let navlinks;
 
-        if (logger == true) {
-            navlinks = <li><a href="#">Profile</a></li><li className="divider"></li><li><a href="#">Studio</a></li><li className="divider"></li><li><a href="#">Log Out</a></li>
+        if (this.state.loggedin == true) {
+            navlinks = <><li><a href="/profile">Profile</a></li><li className="divider"></li><li><a href="/studio">Studio</a></li><li className="divider"></li><li><a href="#">Log Out</a></li></>
         }
         else {
-            navlinks = <li><a href="#">Register</a></li><li className="divider"></li><li><a href="#">Log In</a></li>
+            navlinks = <><li><a href="#">Register</a></li><li className="divider"></li><li><a href="#">Log In</a></li></>
         }
 
         return(
@@ -42,13 +41,13 @@ class Navbar extends React.Component {
                                 </div>
                             </form>
                         </li>
-                        <li>
-                            <Dropdown trigger={<li><a class="dropdown-trigger" href="#!">Navigation<i class="material-icons right">arrow_drop_down</i></a></li>}>{navlinks}</Dropdown>
-                        </li>
+                        <Dropdown trigger={<li><a className="dropdown-trigger" href="#!">Navigation<i className="material-icons right">arrow_drop_down</i></a></li>}>
+                            {navlinks}
+                        </Dropdown>
                     </ul>
                 </div>
             </nav>
-        )
+        );
     }
 }
 
