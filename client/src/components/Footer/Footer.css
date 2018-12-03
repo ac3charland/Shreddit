@@ -9,7 +9,18 @@ main {
 }
 
 .page-footer {
-    border-style: solid none none none;
-    border-width: .5%;
-    border-color: darkslategrey;
+    background-color: darkslategrey;
+    padding: .5rem;
+}
+
+.page-footer a:link {
+    color: whitesmoke;
+}
+
+.page-footer a:hover {
+    color: grey !important;
+}
+
+.page-footer a:visited {
+    color: whitesmoke;
 }

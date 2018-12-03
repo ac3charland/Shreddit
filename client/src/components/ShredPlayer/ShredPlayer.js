@@ -111,7 +111,7 @@ class ShredPlayer extends React.Component {
     render() {
         return (
             <div className="player">
-                <div id="target"></div>
+                <div id={this.props.id}></div>
 
                 <div id="play" className="button btn-floating btn-large cyan lighten-2" onClick={this.playButtonClicked}><i className="material-icons">{this.state.icon}</i></div>
 

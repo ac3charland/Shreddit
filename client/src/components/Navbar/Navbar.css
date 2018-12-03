@@ -10,4 +10,5 @@ main {
 
 .navbar-fixed {
     background-color: darkslategrey;
+    padding: 0 .5rem;
 }
