@@ -26,7 +26,7 @@ class ShredPlayer extends React.Component {
     synth = new Tone.PolySynth(6, Tone.Synth).toMaster();
     
     componentDidMount() {
-        this.sequencer = new Nexus.Sequencer('#target', {
+        this.sequencer = new Nexus.Sequencer('#' + this.props.id, {
             'size': [600, 200],
             'mode': 'toggle',
             'rows': 6,
@@ -86,8 +86,6 @@ class ShredPlayer extends React.Component {
             console.log(stepArray);
             stepToSound(stepArray);
         });
-
-        this.synth.triggerAttackRelease("C4", '8n');
     }
 
     
@@ -111,9 +109,9 @@ class ShredPlayer extends React.Component {
     render() {
         return (
             <div className="player">
-                <div id="target"></div>
+                <div id={this.props.id}></div>
 
-                <div id="play" className="button btn-floating btn-large cyan lighten-2" onClick={this.playButtonClicked}><i className="material-icons">{this.state.icon}</i></div>
+                <div className="play button btn-floating btn-large cyan lighten-2" onClick={this.playButtonClicked}><i className="material-icons">{this.state.icon}</i></div>
 
             </div>
         )
