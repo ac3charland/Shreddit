@@ -16,6 +16,7 @@ class Navbar extends React.Component {
     //     }
     // }
 
+   
     render() {
 
         let navlinks;
@@ -53,9 +54,9 @@ class Navbar extends React.Component {
                                 </div>
                             </form>
                         </li>
-                        <Dropdown trigger={<li><a className="dropdown-trigger" href="#!">Navigation<i className="material-icons right">arrow_drop_down</i></a></li>}>
+                        {/* <Dropdown trigger={<li><a className="dropdown-trigger" href="#!">Navigation<i className="material-icons right">arrow_drop_down</i></a></li>}>
                             {navlinks}
-                        </Dropdown>
+                        </Dropdown> */}
                     </ul>
                 </div>
             </nav>
