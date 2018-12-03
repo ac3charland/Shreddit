@@ -58,6 +58,44 @@ class Navbar extends React.Component {
                         </Dropdown>
                     </ul>
                 </div>
+                <Modal
+                id="RegisterModal"
+                header='Sent!'>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="username" type="text" class="validate"/>
+                        <label for="username">Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" class="validate"/>
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+                </Modal>
+                <Modal
+                id="logInModal"
+                header='Sent!'>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate"/>
+                        <label for="email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" class="validate"/>
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+                </Modal>
             </nav>
         );
     }
