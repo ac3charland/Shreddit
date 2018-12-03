@@ -8,10 +8,10 @@ const Users = mongoose.model('Users');
 router.post('/', auth.optional, (req, res, next) => {
   const { body: { user } } = req;
 
-  if(!user.email) {
+  if(!user.username) {
     return res.status(422).json({
       errors: {
-        email: 'is required',
+        username: 'is required',
       },
     });
   }
@@ -36,10 +36,10 @@ router.post('/', auth.optional, (req, res, next) => {
 router.post('/login', auth.optional, (req, res, next) => {
   const { body: { user } } = req;
 
-  if(!user.email) {
+  if(!user.username) {
     return res.status(422).json({
       errors: {
-        email: 'is required',
+        username: 'is required',
       },
     });
   }
