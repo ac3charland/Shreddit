@@ -4,7 +4,7 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-        "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+        "start": "if-env NODE_ENV=production && echo NODE_ENV && npm run start:prod || npm run start:dev",
         "start:prod": "node server.js",
         "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
         "client": "cd client && npm run start",
@@ -24,10 +24,12 @@
         "cors": "^2.8.5",
         "errorhandler": "^1.5.0",
         "express": "^4.16.3",
+        "express-jwt": "^5.3.1",
         "express-session": "^1.15.6",
         "if-env": "^1.0.4",
         "mongoose": "^5.0.17",
         "morgan": "^1.9.1",
+        "passport": "^0.4.0",
         "passport-jwt": "^4.0.0",
         "passport-local": "^1.0.0",
         "passport-strategy": "^1.0.0"

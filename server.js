@@ -63,19 +63,22 @@ app.use(require('./routes'));
 
 //Error handlers & middlewares
 if(!isProduction) {
-  app.use((err, req, res) => {
-    res.status(err.status || 500);
+  app.use((req, res, next, err) => {
+    res.send(err);
+    if (err) {res.status(err.status || 500);}
 
+    else {
     res.json({
       errors: {
         message: err.message,
         error: err,
       },
     });
+  }
   });
 }
 
-app.use((err, req, res) => {
+app.use((req, res, next, err) => {
   res.status(err.status || 500);
 
   res.json({
@@ -86,4 +89,4 @@ app.use((err, req, res) => {
   });
 });
 
-app.listen(8000, () => console.log('Server running on http://localhost:8000/'));
+app.listen(3001, () => console.log('Server running on http://localhost:3001/'));
