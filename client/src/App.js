@@ -3,23 +3,20 @@ import Main from './pages/Main';
 import Profile from './pages/Profile';
 import Posted from './pages/Posted';
 import Studio from './pages/Studio';
-// import Nav from './components/Navbar';
+import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import ShredPlayer from './components/ShredPlayer';
 
 
 const App = () => (
   <Router>
     <div>
-      {/* <Nav /> */}
+      <Navbar />
       <Route exact path="/" component={Main} />
       <Route exact path="/profile" component={Profile} />
       <Route expact path="/posted" component={Posted} />
       <Route exact path="/studio" component={Studio} />
-      <Route exact path="/shredplayer" component={ShredPlayer} />
       <Footer />
-
     </div>
   </Router>
 )
