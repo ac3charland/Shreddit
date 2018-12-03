@@ -22,8 +22,8 @@ class Login extends Component {
                 header='Sent!'>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="email" class="validate"/>
-                        <label for="email">Email</label>
+                        <input id="username" class="validate"/>
+                        <label for="username">Username</label>
                     </div>
                 </div>
                 <div class="row">
