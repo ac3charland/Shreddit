@@ -1,5 +1,16 @@
 .shred {
     padding: 20px;
-    margin: 20px;
-    
+    margin: 20px;  
+}
+.votes {
+    margin-top: 40px;
+}
+.arrow {
+    font-size: 40px;
+}
+.arrow:hover {
+    cursor: pointer;
+}
+.votesNumber {
+    font-size: 30px;
 }
