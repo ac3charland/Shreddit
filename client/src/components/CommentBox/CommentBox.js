@@ -1,4 +1,8 @@
-//super basic start to post comments
+import React from "react";
+import "./CommentBox.css";
+
+const commentBox = () => (
+    <div class="container">
         <div class="row">
             <form class="col s12">
                 <div class="row">
@@ -12,6 +16,10 @@
                 <i class="material-icons right">send</i>
             </button>
         </div>
+    </div>
+)
+
+export default commentBox;
         
 
 
