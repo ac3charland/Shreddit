@@ -28,6 +28,7 @@ const App = () => (
       {/* <ShredPlayer></ShredPlayer> */}
       <Route exact path="/shredplayer" component={ShredPlayer} />
       <Footer />
+
     </div>
   </Router>
 )
