@@ -19,6 +19,7 @@ const App = () => (
       <Route exact path="/studio" component={Studio} />
       <Route exact path="/shredplayer" component={ShredPlayer} />
       <Footer />
+
     </div>
   </Router>
 )

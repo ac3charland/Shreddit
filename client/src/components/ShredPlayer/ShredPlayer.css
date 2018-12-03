@@ -1,3 +1,8 @@
-.btn {
-    width: 50%
+#play {
+    margin-top: 10px;
+    margin-left: 45%;
+}
+
+.player {
+    width: 600px;
 }

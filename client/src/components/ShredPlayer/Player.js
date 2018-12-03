@@ -45,7 +45,7 @@ var synth = new Tone.PolySynth(6, Tone.Synth).toMaster();
 $(document).ready(function() {
 
     var sequencer = new Nexus.Sequencer('#target', {
-        'size': [400, 200],
+        'size': [00, 200],
         'mode': 'toggle',
         'rows': 6,
         'columns': 8
@@ -78,11 +78,7 @@ $(document).ready(function() {
  
     playButton.on('change', function (v) {
         console.log(v);
-        if (this.state === true && playing === false) {
-            console.log("Gonna trigger sequencer!")
-            sequencer.start();
-            playing = true;
-        }
+        
     })
 
     pauseButton.on('change', function (v) {
