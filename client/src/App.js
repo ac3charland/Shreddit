@@ -6,6 +6,7 @@ import React from 'react';
 // import Nav from './components/Navbar'
 // import Footer from './components/Footer'
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import ShredPlayer from "./components/ShredPlayer";
 
 
 const App = () => (
@@ -18,6 +19,7 @@ const App = () => (
       <Route expact path="/posted" component={Posted} />
       <Route exact path="/studio" component={Studio} />
       <Footer /> */}
+      <ShredPlayer></ShredPlayer>
     </div>
   </Router>
 )
