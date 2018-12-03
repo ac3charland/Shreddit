@@ -3,20 +3,21 @@ import "./Navbar.css";
 
 class Navbar extends React.Component {
     state = {
-        loggedin
+        // loggedin
     }
 
-    authenticate = () => {
-        const authenticated = localStorage.getItem("token");
-        if (authenticated !== "undefined" || authenticated !== "null") {
-            this.setState({ loggedin: true });
-        }
-        else {
-            this.setState({ loggedin: false })
-        }
-    }
+    // authenticate = () => {
+    //     const authenticated = localStorage.getItem("token");
+    //     if (authenticated !== "undefined" || authenticated !== "null") {
+    //         this.setState({ loggedin: true });
+    //     }
+    //     else {
+    //         this.setState({ loggedin: false })
+    //     }
+    // }
 
     render() {
+
         let navlinks;
 
         if (this.state.loggedin == true) {
@@ -26,10 +27,21 @@ class Navbar extends React.Component {
             navlinks = <><li><a href="#">Register</a></li><li className="divider"></li><li><a href="#">Log In</a></li></>
         }
 
+        // const logger = this.state.loggedin;
+        // let navlinks;
+
+        // if (logger == true) {
+        //     navlinks = <li><a href="#">Profile</a></li><li className="divider"></li><li><a href="#">Studio</a></li><li className="divider"></li><li><a href="#">Log Out</a></li>
+        // }
+        // else {
+        //     navlinks = <li><a href="#">Register</a></li><li className="divider"></li><li><a href="#">Log In</a></li>
+        // }
+
+
         return(
             <nav className="navbar-fixed">
                 <div className="nav-wrapper">
-                    <a href="#" className="brand-logo"><i className="fas fa-play"></i> Shreddit</a>
+                    {/* <a href="#" className="brand-logo"><i className="fas fa-play"></i> Shreddit</a> */}
                     <ul className="right">
                         <li>
                             <form>

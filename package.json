@@ -21,9 +21,17 @@
     },
     "dependencies": {
         "axios": "^0.16.2",
+        "cors": "^2.8.5",
+        "errorhandler": "^1.5.0",
         "express": "^4.16.3",
+        "express-session": "^1.15.6",
         "if-env": "^1.0.4",
-        "mongoose": "^5.0.17"
+        "mongoose": "^5.0.17",
+        "morgan": "^1.9.1",
+        "passport-jwt": "^4.0.0",
+        "passport-local": "^1.0.0",
+        "passport-strategy": "^1.0.0",
+        "passport-tutorial": "file:passport"
     },
     "repository": "git@github.com:ac3charland/Shreddit.git"
 }
