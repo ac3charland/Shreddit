@@ -19,7 +19,6 @@ const App = () => (
       <Route expact path="/posted" component={Posted} />
       <Route exact path="/studio" component={Studio} />
       <Footer /> */}
-      <ShredPlayer></ShredPlayer>
     </div>
   </Router>
 )
