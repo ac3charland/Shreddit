@@ -46,12 +46,12 @@ class Navbar extends React.Component {
                     <ul className="right">
                         <li>
                             <form>
-                                <div className="input-field">
+                                {/* <div className="input-field">
                                     <input id="search" type="search" required>
                                         <label className="label-icon" for="search"><i className="material-icons">search</i></label>
                                         <i className="material-icons">close</i>
                                     </input>
-                                </div>
+                                </div> */}
                             </form>
                         </li>
                         {/* <Dropdown trigger={<li><a className="dropdown-trigger" href="#!">Navigation<i className="material-icons right">arrow_drop_down</i></a></li>}>
