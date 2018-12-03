@@ -1,5 +1,4 @@
 import React from "react";
-import {Dropdown} from 'react-materialize';
 import "./Navbar.css";
 
 class Navbar extends React.Component {
@@ -33,19 +32,7 @@ class Navbar extends React.Component {
                 <div className="nav-wrapper">
                     <a href="/" className="brand-logo"><i className="fas fa-play"></i> Shreddit</a>
                     <ul className="right">
-                        {/* <li>
-                            <form>
-                                <div className="input-field">
-                                    <input id="search" type="search" required>
-                                        <label className="label-icon" for="search"><i className="material-icons">search</i></label>
-                                        <i className="material-icons">close</i>
-                                    </input>
-                                </div>
-                            </form>
-                        </li> */}
-                        <Dropdown trigger={<li><a className="dropdown-trigger" href="#!">Navigation<i className="material-icons right">arrow_drop_down</i></a></li>}>
-                            {navlinks}
-                        </Dropdown>
+                        {navlinks}
                     </ul>
                 </div>
             </nav>

@@ -8,9 +8,10 @@ main {
     flex: 1 0 auto;
 }
 
-.site-banner {
+.site-banner img {
     flex: 0 0 auto;
-    max-height: 33.3%;
+    max-height: 24rem;
+    width: 100%;
     border-style: none none solid none;
     border-color: darkslategrey;
 }
