@@ -1,9 +1,12 @@
 import React from "react";
 import "./Navbar.css";
+import API from "../../utils/API";
 
 class Navbar extends React.Component {
     state = {
-        loggedin: false
+        loggedin: false,
+        username: "",
+        password: ""
     }
 
     authenticate = () => {
@@ -16,6 +19,16 @@ class Navbar extends React.Component {
         }
     }
 
+    login = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+        API.newUser({
+            username: this.state.username,
+            password: this.state.password
+        });
+    };
    
     render() {
 
@@ -33,23 +46,7 @@ class Navbar extends React.Component {
                 <div className="nav-wrapper">
                     <a href="#" className="brand-logo"><i className="fas fa-play"></i> Shreddit</a>
                     <ul className="right">
-<<<<<<< HEAD
-                        <li>
-                            <form>
-                                {/* <div className="input-field">
-                                    <input id="search" type="search" required>
-                                        <label className="label-icon" for="search"><i className="material-icons">search</i></label>
-                                        <i className="material-icons">close</i>
-                                    </input>
-                                </div> */}
-                            </form>
-                        </li>
-                        {/* <Dropdown trigger={<li><a className="dropdown-trigger" href="#!">Navigation<i className="material-icons right">arrow_drop_down</i></a></li>}>
-                            {navlinks}
-                        </Dropdown> */}
-=======
                         {navlinks}
->>>>>>> master
                     </ul>
                 </div>
             </nav>
