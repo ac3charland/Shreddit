@@ -27,6 +27,6 @@ var vote = new Schema ({
     
 });
 
-var vote = mongoose.models("Vote", vote);
+var vote = mongoose.model("Vote", vote);
 
-module.exports(vote);
+module.exports = vote;
