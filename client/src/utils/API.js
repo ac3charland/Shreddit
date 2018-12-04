@@ -12,5 +12,9 @@ export default {
     saveUser: function(user) {
         alert("saveUser called")
         return axios.post("/api/users/", user);
+    },
+
+    getAllShreds: function() {
+        return axios.get("/api/posts/")
     }
 }
