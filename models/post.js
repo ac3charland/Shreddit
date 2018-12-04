@@ -12,10 +12,10 @@ var post = new Schema ({
 
     matrix: Array, 
 
-    userId: [
+    user_id: [
         {
             type: Schema.Types.ObjectId,
-            ref: "User"
+            ref: "Users"
         }
     ],
     
