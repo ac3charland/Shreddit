@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { Modal } from 'react-materialize';
 
 class Login extends React.Component {
-    componentDidMount() {
-        var elems = document.querySelectorAll('.modal');
-    }
 
     //sets the messageId as the id of the message selected, then displays the modal
     send = (id) => {
@@ -20,19 +17,24 @@ class Login extends React.Component {
         return(
             <Modal
                 id="logInModal"
-                header='Sent!'>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="username" class="validate"/>
-                        <label for="username">Username</label>
+                header='Login'>
+                <form>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="username" class="validate"/>
+                            <label for="username">Username</label>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" type="password" class="validate"/>
-                        <label for="password">Password</label>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" type="password" class="validate"/>
+                            <label for="password">Password</label>
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                <i class="material-icons right">send</i>
+                            </button> 
+                        </div>
                     </div>
-                </div>
+                </form>
             </Modal>
         )
     }

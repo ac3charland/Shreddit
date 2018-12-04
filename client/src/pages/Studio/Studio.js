@@ -60,10 +60,10 @@ class Studio extends Component {
 
                             <div className="row">
                                 <div className="col s12 center-align">
-                                    <button class="btn waves-effect waves-light" onClick={this.save}>Save
+                                    <button class="btn waves-effect waves-light stuidobtn" onClick={this.save}>Save
                                         <i class="material-icons right">save</i>
                                     </button>
-                                    <button class="btn waves-effect waves-light" onClick={this.clear}>Clear
+                                    <button class="btn waves-effect waves-light studiobtn" onClick={this.clear}>Clear
                                         <i class="material-icons right">delete</i>
                                     </button>
                                 </div>
