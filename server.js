@@ -22,7 +22,7 @@
 // app.listen(PORT, function () {
 //     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 // });
-
+const PORT = process.env.PORT || 3001;
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -53,7 +53,7 @@ if(!isProduction) {
 }
 
 //Configure Mongoose
-mongoose.connect('mongodb://localhost/shreddit');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shreddit');
 mongoose.set('debug', true);
 
 //Models & routes
@@ -77,15 +77,15 @@ if(!isProduction) {
   });
 }
 
-app.use((req, res, next, err) => {
-  res.status(err.status || 500);
+// app.use((req, res, next, err) => {
+//   res.status(err.status || 500);
 
-  res.json({
-    errors: {
-      message: err.message,
-      error: {},
-    },
-  });
-});
+//   res.json({
+//     errors: {
+//       message: err.message,
+//       error: {},
+//     },
+//   });
+// });
 
-app.listen(3001, () => console.log('Server running on http://localhost:3001/'));
+app.listen(PORT, () => console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`));
