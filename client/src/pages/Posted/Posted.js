@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import "./Posted.css";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
-// import SubmitComment from "../../components/SubmitComment";
-// import CommentBox from "../../components/CommentBox";
+import SubmitComment from "../../components/SubmitComment";
+import CommentBox from "../../components/CommentBox";
 import Shred from "../../components/Shred";
 import API from "../../utils/API";
 
 class Posted extends Component {
 
     state = {
-        shreds: []
+        shreds: {id: 1, name: "Person", shred: "Shred1", votes: 120, comments: [{user: "Joe", body: "This is amazing! But it's no Cookie Clicker. :'("}, {user: "JR", body: "I might've done things a little differently, but it's not too bad."}, {user: "Zack", body: "I'm sad I got a job because this is so awesome!"}]}
     }
 
     upvote = (id, votes) => {
@@ -31,25 +29,11 @@ class Posted extends Component {
     render(){
         return (
             <>
-            <Navbar />
             <div className="container">
-                <h2>{this.state.shreds.name}'s Posted Shred</h2>
+                <h2>{this.state.shreds.name}'s Shred</h2>
                 <div className="row">
                     <div className="col s12">
-                        {this.state.shreds.length ? (
-                        this.state.shreds.map(shred => (
-                        <Shred
-                        key={shred.id}
-                        id={shred.id}
-                        shred={shred.shred}
-                        votes={shred.votes}
-                        upvote={this.upvote}
-                        downvote={this.downvote}
-                        />
-                        ))
-                        ) : (
-                        <h3>Uh-oh! Shred no longer available.</h3>
-                        )}
+                        {this.state.shreds.shred}
                     </div>
                 </div>
             </div>
@@ -61,16 +45,14 @@ class Posted extends Component {
                 {this.state.shreds.comments.length ? (
                     this.state.shreds.comments.map(comment => (
                         <CommentBox
-                        id={comment.id}
                         username={comment.user}
-                        comment={comment.comment}
+                        comment={comment.body}
                         />
                     ))
                     ) : (
                     <h3>No comments have been posted yet!</h3>
                 )}
             </div>
-            <Footer />
             </>
         )
     }
