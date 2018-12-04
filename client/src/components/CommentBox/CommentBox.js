@@ -1,23 +1,18 @@
 import React from "react";
 import "./CommentBox.css";
 
-const commentBox = () => (
-        <div class="row">
-            <form class="col s12">
-                <div class="row">
-                <div class="input-field col s12">
-                    <textarea id="textarea1" class="materialize-textarea commentBox"></textarea>
-                    <label for="textarea1">Comment</label>
-                </div>
-                </div>
-            </form>
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                <i class="material-icons right">send</i>
-            </button>
+const commentBox = props => (
+<div class="row">
+    <div class="col s12 m6">
+        <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+                <span class="Author">{props.username}</span>
+                <p class="comment">{props.comment}</p>
+            </div>
         </div>
+    </div>
+</div>
 )
 
 export default commentBox;
-
-
 
