@@ -11,6 +11,16 @@ class Main extends Component {
         shreds: [{id: 1, shred: "Shred1", votes: 120}, {id: 2, shred: "Shred2", votes: 30}, {id: 3, shred:"Shred3", votes: 80}],
     }
 
+    componentDidMount(){
+        getAllShreds();
+    }
+
+    getAllShreds = () => {
+        API.getAllShreds()
+            .then(res => this.setState({shreds: res.data}))
+            .catch(err => console.log(err));
+    }
+
     upvote = (id, votes) => {
         let newVotes = votes + 1;
         API.vote(newVotes, id)
@@ -23,7 +33,10 @@ class Main extends Component {
         API.vote(newVotes, id)
         .then(console.log("downvoted #" + id))
         .catch(err => console.log(err));
+    }
 
+    walkieTalkie = matrix => {
+        this.setState({matrix: matrix});
     }
 
     render(){
@@ -41,12 +54,16 @@ class Main extends Component {
                         {this.state.shreds.length ? (
                             this.state.shreds.map(shred => (
                                 <Shred
-                                    key={shred.id}
-                                    id={shred.id}
-                                    shred={shred.shred}
-                                    votes={shred.votes}
+                                    //key={shred.id}
+                                    id={shred.user_id}
+                                    //shred={shred.shred}
+                                    //votes={shred.votes}
+                                    votes= "120"
                                     upvote={this.upvote}
                                     downvote={this.downvote}
+                                    walkieTalkie={this.walkieTalkie}
+                                    matrix={shred.matrix}
+                                    id={shred.user_id}
                                 />
                             ))
                         ) : (
