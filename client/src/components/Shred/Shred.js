@@ -31,7 +31,8 @@ const Shred = props => (
                 
             </div>
             <div className="row">
-                <div className="col s12 center-align">
+                <div className="col s2"></div>
+                <div className="col s10 center-align">
                     <h6><a href="">Comments |</a><a href=""> Share</a></h6>
                 </div>
             </div>
