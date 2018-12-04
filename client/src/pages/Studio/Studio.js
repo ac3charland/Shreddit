@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Banner from "../../components/Banner"
+import ShredPlayer from "../../components/ShredPlayer"
 import "./Studio.css"
 
 class Studio extends Component {
@@ -7,11 +9,50 @@ class Studio extends Component {
 
     }
 
+    save = () => {
+
+    }
+
+    clear = () => {
+        
+    }
+
     render(){
         return (
-            
             <div>
-                <h1>Studio</h1>
+                <div>
+                    <Banner />
+                </div>
+
+                <div className="row container">
+                    <div className="col s12">
+                        <div className="row">
+                            <h2 className="col s12">Your Studio</h2>
+                        </div>
+
+                        <div className="z-depth-4">
+                            <div className="row">
+                                <div className="col s12 shred">
+                                    <ShredPlayer
+                                        id= "studio" 
+                                    />
+                                </div>
+                            </div>
+
+                            <div className="row">
+                                <div className="col s12 center-align">
+                                    <button class="btn waves-effect waves-light" onClick={this.save}>Save
+                                        <i class="material-icons right">save</i>
+                                    </button>
+                                    <button class="btn waves-effect waves-light" onClick={this.clear}>Clear
+                                        <i class="material-icons right">delete</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         )
     }
