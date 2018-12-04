@@ -26,22 +26,20 @@ class ShredPlayer extends React.Component {
 
     synth = new Tone.PolySynth(6, Tone.Synth).toMaster();
     
+    resizePlayer = () => {
+        const playerWidth = document.getElementsByClassName("player")[0].parentElement.clientWidth - 16;
+
+        this.sequencer = new Nexus.Sequencer('#' + this.props.id, {
+            'size': [playerWidth, 200],
+            'mode': 'toggle',
+            'rows': 6,
+            'columns': 16
+        });
+    }
+
     componentDidMount() {
 
-        const resizePlayer = () => {
-            const playerWidth = document.getElementsByClassName("player")[0].parentElement.clientWidth - 16;
-
-            this.sequencer = new Nexus.Sequencer('#' + this.props.id, {
-                'size': [playerWidth, 200],
-                'mode': 'toggle',
-                'rows': 6,
-                'columns': 16
-            });
-
-            this.setState({'playerWidth': playerWidth})
-        }
-
-        resizePlayer()
+        this.resizePlayer()
 
         window.addEventListener("resize", console.log("Resizing"));
         
@@ -96,7 +94,6 @@ class ShredPlayer extends React.Component {
         });
 
         this.sequencer.on('step', function (stepArray) {
-            console.log(stepArray);
             stepToSound(stepArray);
         });
     }
