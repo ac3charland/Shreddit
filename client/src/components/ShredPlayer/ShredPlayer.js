@@ -8,6 +8,7 @@ class ShredPlayer extends React.Component {
     state = {
         isPlaying: false,
         icon: "play_arrow",
+        playerWidth: 600,
         matrix: [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -26,12 +27,24 @@ class ShredPlayer extends React.Component {
     synth = new Tone.PolySynth(6, Tone.Synth).toMaster();
     
     componentDidMount() {
-        this.sequencer = new Nexus.Sequencer('#' + this.props.id, {
-            'size': [600, 200],
-            'mode': 'toggle',
-            'rows': 6,
-            'columns': 16
-        });
+
+        const resizePlayer = () => {
+            const playerWidth = document.getElementsByClassName("player")[0].parentElement.clientWidth - 16;
+
+            this.sequencer = new Nexus.Sequencer('#' + this.props.id, {
+                'size': [playerWidth, 200],
+                'mode': 'toggle',
+                'rows': 6,
+                'columns': 16
+            });
+
+            this.setState({'playerWidth': playerWidth})
+        }
+
+        resizePlayer()
+
+        window.addEventListener("resize", console.log("Resizing"));
+        
         
         // This is how we'll load melodies from Mongo
         this.sequencer.matrix.set.all(this.state.matrix);
