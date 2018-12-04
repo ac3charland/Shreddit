@@ -3,7 +3,6 @@ import Banner from "../../components/Banner";
 import ShredPlayer from "../../components/ShredPlayer";
 import API from "../../utils/API";
 import "./Studio.css"
-import API from "../../utils/API";
 
 class Studio extends Component {
 

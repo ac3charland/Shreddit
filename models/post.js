@@ -27,4 +27,4 @@ var post = new Schema ({
 
 var post = mongoose.model("Post", post);
 
-module.exports(post);
+module.exports = post;
