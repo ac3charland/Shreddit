@@ -22,7 +22,10 @@ module.exports = {
     },
     create: function(req, res) {
         db.Post
-            .create(req.body)
+            .create({
+                user_id: req.body.user_id,
+                matrix: req.body.matrix
+            })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
