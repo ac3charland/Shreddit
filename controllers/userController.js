@@ -4,6 +4,7 @@ module.exports = {
     findById: function(req,res){
         db.User
             .find(req.params.id)
+            .populate()
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
