@@ -25,7 +25,7 @@ class ShredPlayer extends React.Component {
     sequencer; 
 
     synth = new Tone.PolySynth(6, Tone.Synth).toMaster();
-    
+
     resizePlayer = () => {
         const playerWidth = document.getElementsByClassName("player")[0].parentElement.clientWidth - 16;
 
@@ -45,9 +45,15 @@ class ShredPlayer extends React.Component {
         
         
         // This is how we'll load melodies from Mongo
-        this.sequencer.matrix.set.all(this.state.matrix);
+        this.sequencer.matrix.set.all(this.props.matrix);
 
         this.sequencer.colorize("accent", "#4dd0e1");
+
+        const sendMatrix = matrix => {
+            console.log("matrix inside sendMatrix(): ");
+            console.log(matrix);
+            this.props.walkieTalkie(matrix)
+        }
 
         // Plays all the notes at a step in the sequencer
         const stepToSound = (stepArray) => {
@@ -91,6 +97,7 @@ class ShredPlayer extends React.Component {
 
         this.sequencer.on('change', function (cell) {
             changeToSound(cell);
+            sendMatrix(exportMatrix(this.matrix.pattern))
         });
 
         this.sequencer.on('step', function (stepArray) {

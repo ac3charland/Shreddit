@@ -21,7 +21,7 @@ class Main extends Component {
     downvote = (id, votes) => {
         let newVotes = votes - 1;
         API.vote(newVotes, id)
-        .then(console.log("upvoted #" + id))
+        .then(console.log("downvoted #" + id))
         .catch(err => console.log(err));
 
     }

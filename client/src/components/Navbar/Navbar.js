@@ -17,11 +17,12 @@ class Navbar extends React.Component {
         var instances = M.Modal.init(elems);
         var elems = document.querySelectorAll('#RegisterModal');
         var instances = M.Modal.init(elems);
+        this.authenticate();
     }
 
     authenticate = () => {
         const authenticated = localStorage.getItem("token");
-        if (authenticated !== "undefined" || authenticated !== "null") {
+        if (authenticated) {
             this.setState({ loggedin: true });
         }
         else {

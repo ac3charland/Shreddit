@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Modal } from 'react-materialize';
+import API from "../../utils/API"
 
 class Register extends React.Component {
 
@@ -15,8 +16,17 @@ class Register extends React.Component {
         })
     }
 
-    saveUser = () => {
-        alert("Username: " + this.state.username + "\nPassword: " + this.state.password)
+    saveUser = (event) => {
+        event.preventDefault();
+
+        let user = {
+            username: this.state.username,
+            password: this.state.password
+        }
+        API.saveUser({ user: user })
+            .then(function(res){
+                console.log(res)
+            })
     }
 
     render(){
