@@ -20,7 +20,7 @@ class Register extends React.Component {
                 id="RegisterModal"
                 header='Register'>
                 <form>
-                    <div class="row">
+                    {/* <div class="row">
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s6">
@@ -33,7 +33,7 @@ class Register extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="username" type="text" class="validate"/>
