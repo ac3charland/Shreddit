@@ -7,5 +7,10 @@ export default {
 
     saveShred: function(shredData) {
         return axios.post("api/post", shredData);
+    },
+
+    saveUser: function(user) {
+        alert("saveUser called")
+        return axios.post("/api/users/", user);
     }
 }
