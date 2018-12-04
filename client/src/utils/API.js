@@ -14,7 +14,14 @@ export default {
         return axios.post("/api/users/", user);
     },
 
+
+    loginUser: function(user) {
+        alert("loginUser called")
+        return axios.post("/api/users/login", user);
+    },
+
     getAllShreds: function() {
         return axios.get("/api/posts/")
+
     }
 }
