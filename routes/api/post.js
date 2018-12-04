@@ -7,6 +7,10 @@ router.route("/")
     .get(postController.findAll)
     .post(postController.create);
 
+router.route("/")
+    .get(postController.findAll)
+    .post(postController.create);
+
 router.route("/:postId")
     .get(postController.findById)
     .put(postController.update)

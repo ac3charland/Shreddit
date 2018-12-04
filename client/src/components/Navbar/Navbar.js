@@ -1,5 +1,7 @@
 import React from "react";
 import "./Navbar.css";
+import  Login  from "../Modals/Login";
+import  Register  from "../Modals/Register";
 
 
 class Navbar extends React.Component {
@@ -24,12 +26,11 @@ class Navbar extends React.Component {
     render() {
 
         let navlinks;
-
         if (this.state.loggedin === true) {
             navlinks = <><li><a href="/Profile">Profile</a></li><li className="divider"></li><li><a href="/Studio">Studio</a></li><li className="divider"></li><li><a href="#">Log Out</a></li></>
         }
         else {
-            navlinks = <><li><a href="#">Register</a></li><li className="divider"></li><li><a href="#">Log In</a></li></>
+            navlinks = <><li><a button={Register}>Register</a></li><li className="divider"></li><li><a button={Login}>Log In</a></li></>
         }
 
         return(
@@ -46,4 +47,3 @@ class Navbar extends React.Component {
 }
 
 export default Navbar;
-
