@@ -55,7 +55,7 @@ class Navbar extends React.Component {
                 <Register/>
                 <nav className="navbar-fixed">
                     <div className="nav-wrapper">
-                        <a href="#" className="brand-logo"><i className="fas fa-play"></i> Shreddit</a>
+                        <a href="/" className="brand-logo"><i className="fas fa-play"></i> Shreddit</a>
                         <ul className="right">
                             {navlinks}
                         </ul>

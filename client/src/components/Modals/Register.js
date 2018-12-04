@@ -3,15 +3,20 @@ import { Modal } from 'react-materialize';
 
 class Register extends React.Component {
 
+    state = {
+        username: "",
+        password: "",
+    }
 
-    //sets the messageId as the id of the message selected, then displays the modal
-    send = (id) => {
+    handleInputChange = event => {
+        const { name, value } = event.target
         this.setState({
-            messageId: id
-        }, () => {
-        var modal = window.$("#RegisterModal");
-        modal.modal('open')
+            [name]: value
         })
+    }
+
+    saveUser = () => {
+        alert("Username: " + this.state.username + "\nPassword: " + this.state.password)
     }
 
     render(){
@@ -20,7 +25,7 @@ class Register extends React.Component {
                 id="RegisterModal"
                 header='Register'>
                 <form>
-                    <div class="row">
+                    {/* <div class="row">
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s6">
@@ -33,19 +38,19 @@ class Register extends React.Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input id="username" type="text" class="validate"/>
+                        <div className="input-field col s12">
+                            <input id="username" type="text" className="validate" name="username" onChange={this.handleInputChange} value={this.state.username}/>
                             <label for="username">Username</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input id="password" type="password" class="validate"/>
+                        <div className="input-field col s12">
+                            <input id="password" type="password" className="validate" name="password" onChange={this.handleInputChange} value={this.state.password}/>
                             <label for="password">Password</label>
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                                <i class="material-icons right">send</i>
+                            <button onClick={this.saveUser} className="btn waves-effect waves-light" type="submit" name="action">Submit
+                                <i className="material-icons right">send</i>
                             </button> 
                         </div>
                     </div>
