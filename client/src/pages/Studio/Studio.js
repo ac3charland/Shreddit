@@ -32,11 +32,13 @@ class Studio extends Component {
 
                         <div className="z-depth-4">
                             <div className="row">
-                                <div className="col s12 shred">
+                                <div className="col s1"></div>
+                                <div className="col s10 shred">
                                     <ShredPlayer
                                         id= "studio" 
                                     />
                                 </div>
+                                <div className="col s1"></div>
                             </div>
 
                             <div className="row">
