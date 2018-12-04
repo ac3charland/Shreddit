@@ -5,16 +5,33 @@ import "./Studio.css"
 
 class Studio extends Component {
 
+
+    // TODO: Update this.state.matrix when user changes shredplayer component
+
     state = {
+        userId: "",
+        matrix: [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ]
 
     }
 
     save = () => {
+        // before saving to db, make sure saving current matrix
 
+        API.saveShred({
+            userId: this.state.userId,
+            matrix: this.state.matrix
+        })
     }
 
     clear = () => {
-        
+        // Set state matrix to 0 matrix
     }
 
     render(){
