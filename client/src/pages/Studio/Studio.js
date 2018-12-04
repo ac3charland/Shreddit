@@ -2,36 +2,44 @@ import React, { Component } from "react";
 import Banner from "../../components/Banner"
 import ShredPlayer from "../../components/ShredPlayer"
 import "./Studio.css"
+import API from "../../utils/API";
 
 class Studio extends Component {
 
-
+    startingMatrix = [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    ]
     // TODO: Update this.state.matrix when user changes shredplayer component
 
     state = {
-        userId: "",
-        matrix: [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ]
+        user_id: "user",
+        matrix: this.startingMatrix
 
+    }
+
+    walkieTalkie = matrix => {
+        this.setState({matrix: matrix});
     }
 
     save = () => {
         // before saving to db, make sure saving current matrix
 
         API.saveShred({
-            userId: this.state.userId,
+            user_id: this.state.user_id,
             matrix: this.state.matrix
         })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
     }
 
     clear = () => {
         // Set state matrix to 0 matrix
+        this.setState({matrix: this.startingMatrix});
     }
 
     render(){
@@ -52,7 +60,9 @@ class Studio extends Component {
                                 <div className="col s1"></div>
                                 <div className="col s10 shred">
                                     <ShredPlayer
-                                        id= "studio" 
+                                        walkieTalkie={this.walkieTalkie}
+                                        matrix={this.state.matrix}
+                                        id={this.state.user_id}
                                     />
                                 </div>
                                 <div className="col s1"></div>
