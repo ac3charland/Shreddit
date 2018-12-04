@@ -62,30 +62,30 @@ require('./config/passport');
 app.use(require('./routes'));
 
 //Error handlers & middlewares
-// if(!isProduction) {
-//   app.use((req, res, next, err) => {
-//     if (err) {res.status(err.status || 500);}
+if(!isProduction) {
+  app.use((req, res, next, err) => {
+    if (err) {res.status(err.status || 500);}
 
-//     else {
-//     res.json({
-//       errors: {
-//         message: err.message,
-//         error: err,
-//       },
-//     });
-//   }
-//   });
-// }
+    else {
+    res.json({
+      errors: {
+        message: err.message,
+        error: err,
+      },
+    });
+  }
+  });
+}
 
-// app.use((req, res, next, err) => {
-//   res.status(err.status || 500);
+app.use((req, res, next, err) => {
+  res.status(err.status || 500);
 
-//   res.json({
-//     errors: {
-//       message: err.message,
-//       error: {},
-//     },
-//   });
-// });
+  res.json({
+    errors: {
+      message: err.message,
+      error: {},
+    },
+  });
+});
 
 app.listen(3001, () => console.log('Server running on http://localhost:3001/'));
