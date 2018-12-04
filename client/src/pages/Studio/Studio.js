@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Banner from "../../components/Banner"
-import ShredPlayer from "../../components/ShredPlayer"
+import Banner from "../../components/Banner";
+import ShredPlayer from "../../components/ShredPlayer";
+import API from "../../utils/API";
 import "./Studio.css"
 
 class Studio extends Component {

@@ -9,7 +9,7 @@ main {
 }
 
 .page-footer {
-    background-color: darkslategrey;
+    background-color: darkslategrey !important;
     padding: .5rem;
 }
 
