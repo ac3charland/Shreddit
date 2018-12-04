@@ -2,12 +2,13 @@ import React from "react";
 import "./CommentBox.css";
 
 const commentBox = props => (
-<div class="row">
-    <div class="col s12 m6">
-        <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-                <span class="Author">{props.username}</span>
-                <p class="comment">{props.comment}</p>
+<div className="container">
+    <div className="col s12">
+        <div className="card">
+            <div className="card-content">
+                <h5><span className="Author">{props.username}</span></h5>
+                <hr></hr>
+                <p className="comment">{props.comment}</p>
             </div>
         </div>
     </div>
