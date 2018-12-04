@@ -1,6 +1,6 @@
 import React from "react";
 import "./Navbar.css";
-import API from "../../utils/API";
+
 
 class Navbar extends React.Component {
     state = {
@@ -19,16 +19,7 @@ class Navbar extends React.Component {
         }
     }
 
-    login = event => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
-        API.newUser({
-            username: this.state.username,
-            password: this.state.password
-        });
-    };
+
    
     render() {
 
