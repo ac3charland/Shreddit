@@ -31,7 +31,7 @@ class Studio extends Component {
         // before saving to db, make sure saving current matrix
 
         API.saveShred({
-            user_id: this.state.user_id,
+            // user_id: this.state.user_id,
             matrix: this.state.matrix
         })
         .then(res => console.log(res))
