@@ -14,7 +14,6 @@ class Profile extends Component {
         shreds: [
             //{id: 1, shred: "Shred1", votes: 120}, {id: 2, shred: "Shred2", votes: 30}, {id: 3, shred:"Shred3", votes: 80}
         ],
-
     }
 
     componentDidMount(){
