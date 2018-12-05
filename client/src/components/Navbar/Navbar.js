@@ -9,6 +9,7 @@ class Navbar extends React.Component {
     state = {
         loggedin: false
     }
+
     componentDidMount(){
         var elems = document.querySelectorAll('#logInModal');
         var instances = M.Modal.init(elems);
@@ -23,27 +24,33 @@ class Navbar extends React.Component {
             this.setState({ loggedin: true });
         }
         else {
-            this.setState({ loggedin: false })
+            this.setState({ loggedin: false });
         }
     }
 
     login = () => {
-        console.log("login")
+        console.log("login");
         var modal = window.$("#logInModal");
-        modal.modal('open')
+        modal.modal('open');
     }
 
     register = () => {
-        console.log("Register")
+        console.log("Register");
         var modal = window.$("#RegisterModal");
-        modal.modal('open')
+        modal.modal('open');
+    }
+
+    logout = () => {
+        console.log("logout");
+        localStorage.removeItem("token")
+        this.setState({ loggedin: false });
+        return null;
     }
 
     render() {
-
         let navlinks;
         if (this.state.loggedin === true) {
-            navlinks = <><li><a href="/Profile">Profile</a></li><li className="divider"></li><li><a href="/Studio">Studio</a></li><li className="divider"></li><li><a href="#">Log Out</a></li></>
+            navlinks = <><li><a href="/Profile">Profile</a></li><li className="divider"></li><li><a href="/Studio">Studio</a></li><li className="divider"></li><li><a button="#" onClick={this.logout}>Log Out</a></li></>
         }
         else {
             navlinks = <><li><a button={Register} onClick={this.register}>Register</a></li><li className="divider"></li><li><a button={Login} onClick={this.login}>Log In</a></li></>
