@@ -1,23 +1,28 @@
-import React from "react";
+import React, { Component } from "react";
 import "./SubmitComment.css";
 
-const SubmitComment = () => (
-        <div className="container">
-            <form className="col s12">
+
+
+
+const submitComment = props => (
+            <form>
+            <div className="row">
+            <div className="col s12">
                 <div className="row">
                 <div className="input-field col s12">
-                    <textarea id="textarea1" className="materialize-textarea commentBox"></textarea>
+                    <textarea id="textarea1" className="materialize-textarea" name="body"  value={props.body}></textarea>
                     <label for="textarea1">Comment</label>
-                    <button className="btn waves-effect waves-light right" type="submit" name="action">Submit
-                    <i className="material-icons right">send</i>
-                    </button>
                 </div>
                 </div>
+            </div>
+            <button onClick={props.postComment} className="btn waves-effect waves-light" type="submit" name="action">Submit
+                <i className="material-icons right">send</i>
+            </button>
+            </div>
             </form>
-        </div>
-)
+        )
 
-export default SubmitComment;
+    
 
-
+export default submitComment;
 
