@@ -20,8 +20,6 @@ class Login extends React.Component {
         
         event.preventDefault();
 
-        alert("log in clicked")
-
         let user = {
             username: this.state.username,
             password: this.state.password
