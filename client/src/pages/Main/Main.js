@@ -69,9 +69,11 @@ class Main extends Component {
                                     key={shred._id}
                                     id={shred._id}
                                     user_id={shred._id}
+                                    shred_id={shred._id}
                                     votes={shred.votes}
                                     upvote={this.upvote}
                                     downvote={this.downvote}
+
                                     walkieTalkie={this.walkieTalkie}
                                     matrix={shred.matrix}
                                 />
