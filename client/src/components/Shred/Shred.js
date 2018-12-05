@@ -26,7 +26,10 @@ const Shred = props => (
                 </div>
                 <div className="col s10">
                     <ShredPlayer
-                        id={props.id}/>
+                        walkieTalkie={props.walkieTalkie}
+                        matrix={props.matrix}
+                        id={props.user_id}
+                    />
                 </div>
                 
             </div>

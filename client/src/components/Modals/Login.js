@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Modal } from 'react-materialize';
+import API from "../../utils/API";
 
 class Login extends React.Component {
 
@@ -15,8 +16,19 @@ class Login extends React.Component {
         })
     }
 
-    login = () => {
-        alert("Username: " + this.state.username + "\nPassword: " + this.state.password)
+    loginUser = (event) => {
+        
+        event.preventDefault();
+
+        let user = {
+            username: this.state.username,
+            password: this.state.password
+        }
+
+        API.loginUser({ user: user })
+            .then(function(res){
+                console.log("res from login: ", res.data.user);
+            })
     }
 
     render(){
@@ -35,7 +47,7 @@ class Login extends React.Component {
                         <div class="input-field col s12">
                             <input id="password" type="password" className="validate" name="password" onChange={this.handleInputChange} value={this.state.password}/>
                             <label for="password">Password</label>
-                            <button onClick={this.login} className="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <button onClick={this.loginUser} className="btn waves-effect waves-light" type="submit" name="action">Submit
                                 <i className="material-icons right">send</i>
                             </button> 
                         </div>

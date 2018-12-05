@@ -8,7 +8,22 @@ import "./Main.css";
 class Main extends Component {
 
     state = {
-        shreds: [{id: 1, shred: "Shred1", votes: 120}, {id: 2, shred: "Shred2", votes: 30}, {id: 3, shred:"Shred3", votes: 80}],
+        shreds: [
+            //{id: 1, shred: "Shred1", votes: 120}, {id: 2, shred: "Shred2", votes: 30}, {id: 3, shred:"Shred3", votes: 80}
+        ],
+    }
+
+    componentDidMount(){
+        this.getAllShreds();
+    }
+
+    getAllShreds = () => {
+        API.getAllShreds()
+            .then(res => {
+                console.log(res.data);
+                this.setState({shreds: res.data})
+            })
+            .catch(err => console.log(err));
     }
 
     upvote = (id, votes) => {
@@ -23,7 +38,10 @@ class Main extends Component {
         API.vote(newVotes, id)
         .then(console.log("downvoted #" + id))
         .catch(err => console.log(err));
+    }
 
+    walkieTalkie = matrix => {
+        this.setState({matrix: matrix});
     }
 
     render(){
@@ -41,12 +59,14 @@ class Main extends Component {
                         {this.state.shreds.length ? (
                             this.state.shreds.map(shred => (
                                 <Shred
-                                    key={shred.id}
-                                    id={shred.id}
-                                    shred={shred.shred}
-                                    votes={shred.votes}
-                                    upvote={this.upvote}
-                                    downvote={this.downvote}
+                                    key={shred._id}
+                                    user_id={shred._id}
+                                    //votes={shred.votes}
+                                    votes= "120"
+                                    // upvote={this.upvote}
+                                    // downvote={this.downvote}
+                                    walkieTalkie={this.walkieTalkie}
+                                    matrix={shred.matrix}
                                 />
                             ))
                         ) : (

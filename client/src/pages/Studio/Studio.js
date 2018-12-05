@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Banner from "../../components/Banner";
 import ShredPlayer from "../../components/ShredPlayer";
 import API from "../../utils/API";
-import "./Studio.css"
+import "./Studio.css";
+
 
 class Studio extends Component {
 
@@ -30,7 +31,7 @@ class Studio extends Component {
         // before saving to db, make sure saving current matrix
 
         API.saveShred({
-            user_id: this.state.user_id,
+            // user_id: this.state.user_id,
             matrix: this.state.matrix
         })
         .then(res => console.log(res))
@@ -70,7 +71,7 @@ class Studio extends Component {
 
                             <div className="row">
                                 <div className="col s12 center-align">
-                                    <button class="btn waves-effect waves-light stuidobtn" onClick={this.save}>Save
+                                    <button class="btn waves-effect waves-light studiobtn" onClick={this.save}>Save
                                         <i class="material-icons right">save</i>
                                     </button>
                                     <button class="btn waves-effect waves-light studiobtn" onClick={this.clear}>Clear
