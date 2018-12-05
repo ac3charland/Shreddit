@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { Modal } from 'react-materialize';
-import API from "../../utils/API"
+import API from "../../utils/API";
+import  { Redirect } from 'react-router-dom';
 
 class Register extends React.Component {
 
     state = {
         username: "",
         password: "",
+        registered: false,
+        readyToRedirect: false,
     }
 
     handleInputChange = event => {
@@ -18,6 +21,9 @@ class Register extends React.Component {
 
     saveUser = (event) => {
         event.preventDefault();
+
+        let currentComp = this;
+        alert(currentComp.state.registered)
 
         let user = {
             username: this.state.username,
@@ -31,13 +37,22 @@ class Register extends React.Component {
 
         API.saveUser({ user: user })
             .then(function(res){
-                res.sendFile("../../client/public/index.html");
+                alert("a")
+                if (res.data.user) {
+                    currentComp.setState({registered: true})
+                    console.log("inside if")
+                    // route to main page
+                    // return <Redirect to='/'  />
+                    //return <Redirect to='/'/>
+                    currentComp.setState({readyToRedirect: true})
+                } else {
+                    alert("else")
+                }
             })
     }
 
     render(){
-        return(
-            <Modal
+        return( this.state.readyToRedirect?<Redirect to='/Profile'/> : <Modal
                 id="RegisterModal"
                 header='Register'>
                 <form>
@@ -71,7 +86,7 @@ class Register extends React.Component {
                         </div>
                     </div>
                 </form>
-            </Modal>
+            </Modal> 
         )
     }
 }
