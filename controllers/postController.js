@@ -11,8 +11,8 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     findById: function(req, res) {
-        db.Book
-            .findById(req.params.id)
+        db.Post
+            .findById(req.params.postId)
             .populate({
                 path: 'comment',
                 populate: { path: 'Users' }

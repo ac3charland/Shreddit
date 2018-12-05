@@ -14,7 +14,7 @@ const App = () => (
       <Navbar />
       <Route exact path="/" component={Main} />
       <Route exact path="/profile" component={Profile} />
-      <Route path="/posted" component={Posted} />
+      <Route path="/posted/:postId" component={Posted} />
       <Route exact path="/studio" component={Studio} />
       <Footer />
     </div>
