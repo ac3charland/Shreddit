@@ -3,6 +3,7 @@ import { Modal } from 'react-materialize';
 import API from "../../utils/API";
 
 class Login extends React.Component {
+    //when saving password, add simple encoding
 
     state = {
         username: "",
@@ -25,10 +26,18 @@ class Login extends React.Component {
             password: this.state.password
         }
 
+        localStorage.setItem("username", user.username);
+        localStorage.setItem("password", user.password);
+
         API.loginUser({ user: user })
             .then(function(res){
                 console.log("res from login: ", res.data.user);
+                localStorage.setItem("token", res.data.user.token);
             })
+    }
+
+    componentWillUnmount() {
+        
     }
 
     render(){
@@ -40,13 +49,13 @@ class Login extends React.Component {
                     <div className="row">
                         <div className="input-field col s12">
                             <input id="username" type="text" className="validate" name="username" onChange={this.handleInputChange} value={this.state.username}/>
-                            <label for="username">Username</label>
+                            <label htmlFor="username">Username</label>
                         </div>
                     </div>
                     <div className="row">
-                        <div class="input-field col s12">
+                        <div className="input-field col s12">
                             <input id="password" type="password" className="validate" name="password" onChange={this.handleInputChange} value={this.state.password}/>
-                            <label for="password">Password</label>
+                            <label htmlFor="password">Password</label>
                             <button onClick={this.loginUser} className="btn waves-effect waves-light" type="submit" name="action">Submit
                                 <i className="material-icons right">send</i>
                             </button> 
