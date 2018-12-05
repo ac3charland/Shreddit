@@ -16,7 +16,7 @@ const App = () => (
       <Navbar />
       <Route exact path="/" component={Main} />
       <Route exact path="/profile" component={Profile} />
-      <Route expact path="/posted" component={Posted} />
+      <Route path="/posted" component={Posted} />
       <Route exact path="/studio" component={Studio} />
       <Footer />
     </div>

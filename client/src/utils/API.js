@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
     vote: function(votes, id){
-        return axios.put("/api/users/" + id, votes);
+        return axios.put("/api/votes/" + id, votes);
     },
 
     saveShred: function(shredData) {
@@ -24,4 +24,5 @@ export default {
     getPostShred: function(id) {
         return axios.get("/api/posts/" + id);
     }
+
 }

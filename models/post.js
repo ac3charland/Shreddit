@@ -22,10 +22,9 @@ var post = new Schema ({
         type: Date,
         default: Date.now
     },
-
     votes: {
         type: Number,
-        default: 0,
+        default: 0
     }
 
     

@@ -4,6 +4,7 @@ module.exports = {
     findAll: function(req, res) {
         db.Post
             .find(req.query)
+            .sort({votes: -1})
             .populate('comment')
             .populate('vote')
             .then(dbModel => res.json(dbModel))

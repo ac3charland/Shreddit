@@ -10,7 +10,7 @@ class Main extends Component {
     state = {
         shreds: [
             //{id: 1, shred: "Shred1", votes: 120}, {id: 2, shred: "Shred2", votes: 30}, {id: 3, shred:"Shred3", votes: 80}
-        ],
+        ]
     }
 
     componentDidMount(){
@@ -28,15 +28,22 @@ class Main extends Component {
 
     upvote = (id, votes) => {
         let newVotes = votes + 1;
-        API.vote(newVotes, id)
-            .then(console.log("upvoted #" + id))
+        let updateVotes = {
+            votes: newVotes
+        }
+        API.vote(updateVotes, id)
+            .then(this.getAllShreds())
             .catch(err => console.log(err));
     }
 
     downvote = (id, votes) => {
         let newVotes = votes - 1;
-        API.vote(newVotes, id)
-        .then(console.log("downvoted #" + id))
+        let updateVotes = {
+            votes: newVotes
+        }
+
+        API.vote(updateVotes, id)
+        .then(this.getAllShreds())
         .catch(err => console.log(err));
     }
 
@@ -60,11 +67,13 @@ class Main extends Component {
                             this.state.shreds.map(shred => (
                                 <Shred
                                     key={shred._id}
+                                    id={shred._id}
                                     user_id={shred._id}
-                                    //votes={shred.votes}
-                                    votes= "120"
-                                    // upvote={this.upvote}
-                                    // downvote={this.downvote}
+                                    shred_id={shred._id}
+                                    votes={shred.votes}
+                                    upvote={this.upvote}
+                                    downvote={this.downvote}
+
                                     walkieTalkie={this.walkieTalkie}
                                     matrix={shred.matrix}
                                 />
