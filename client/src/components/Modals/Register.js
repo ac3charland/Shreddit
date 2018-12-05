@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { Modal } from 'react-materialize';
-import API from "../../utils/API"
+import API from "../../utils/API";
+import  { Redirect } from 'react-router-dom';
 
 class Register extends React.Component {
-    //when saving password, add simple encoding
 
     state = {
         username: "",
         password: "",
+        registered: false,
+        readyToRedirect: false,
     }
 
     handleInputChange = event => {
@@ -20,24 +22,37 @@ class Register extends React.Component {
     saveUser = (event) => {
         event.preventDefault();
 
+        let currentComp = this;
+        alert(currentComp.state.registered)
+
         let user = {
             username: this.state.username,
             password: this.state.password
         }
 
+        let passwordLS = "ac" + user.password + "x0!"
+
         localStorage.setItem("username", user.username);
-        localStorage.setItem("password", user.password);
+        localStorage.setItem("password", passwordLS);
 
         API.saveUser({ user: user })
             .then(function(res){
-                console.log(res)
-                localStorage.setItem("token", res.data.user.token);
+                alert("a")
+                if (res.data.user) {
+                    currentComp.setState({registered: true})
+                    console.log("inside if")
+                    // route to main page
+                    // return <Redirect to='/'  />
+                    //return <Redirect to='/'/>
+                    currentComp.setState({readyToRedirect: true})
+                } else {
+                    alert("else")
+                }
             })
     }
 
     render(){
-        return(
-            <Modal
+        return( this.state.readyToRedirect?<Redirect to='/Profile'/> : <Modal
                 id="RegisterModal"
                 header='Register'>
                 <form>
@@ -55,23 +70,23 @@ class Register extends React.Component {
                             </div>
                         </div>
                     </div> */}
-                    <div className="row">
+                    <div class="row">
                         <div className="input-field col s12">
                             <input id="username" type="text" className="validate" name="username" onChange={this.handleInputChange} value={this.state.username}/>
-                            <label htmlFor="username">Username</label>
+                            <label for="username">Username</label>
                         </div>
                     </div>
-                    <div className="row">
+                    <div class="row">
                         <div className="input-field col s12">
                             <input id="password" type="password" className="validate" name="password" onChange={this.handleInputChange} value={this.state.password}/>
-                            <label htmlFor="password">Password</label>
+                            <label for="password">Password</label>
                             <button onClick={this.saveUser} className="btn waves-effect waves-light" type="submit" name="action">Submit
                                 <i className="material-icons right">send</i>
                             </button> 
                         </div>
                     </div>
                 </form>
-            </Modal>
+            </Modal> 
         )
     }
 }

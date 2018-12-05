@@ -17,28 +17,36 @@ class Posted extends Component {
     ]
 
     state = {
+        shred: false,
         user_id: "Person",
         // post_id: window.location.href.substring(window.location.href.indexOf("posted/") + 7),
         matrix: this.startingMatrix,
-        comments: [{user: "Joe", body: "This is amazing! But it's no Cookie Clicker. :'("}, {user: "JR", body: "I might've done things a little differently, but it's not too bad."}, {user: "Zack", body: "I'm sad I got a job because this is so awesome!"}]
+        comments: [{user: "Joe", body: "This is amazing! But it's no Cookie Clicker. :'("}, {user: "JR", body: "I might've done things a little differently, but it's not too bad."}, {user: "Zack", body: "I'm sad I got a job because this is so awesome!"}],
+        comment: ""
     }
 
     componentDidMount() {
-        // this.getPostShred(this.state.post_id);
-        console.log("Post id: " + this.state.post_id)
+        const id = this.props.match.params.postId
+        
+        this.getPostShred(id);
+
     }
 
     getPostShred = (id) => {
         API.getPostShred(id)
             .then(res => {
                 console.log(res.data);
-                this.setState({matrix: res.data})
+                this.setState({shred: res.data})
             })
             .catch(err => console.log(err));
     }
 
     walkieTalkie = matrix => {
         this.setState({matrix: matrix});
+    }
+
+    cellphone = comment => {
+        API.postComment({ comment: comment }, props.match.params.postId)
     }
 
     upvote = (id, votes) => {
@@ -56,6 +64,28 @@ class Posted extends Component {
 
     }
 
+    handleInputChange = event => {
+        const { name, value } = event.target
+        this.setState({
+            [name]: value
+        })
+    }
+
+    postComment = event => {
+
+        event.preventDefault();
+
+        let comment = {
+            comment: this.state.comment
+        }
+
+        API.postComment
+            .then(function(res){
+                console.log(res.data.comment)
+            })
+
+    }
+
     render(){
         return (
             <>
@@ -63,17 +93,23 @@ class Posted extends Component {
                 <h2>{this.state.user_id}'s Shred</h2>
                 <div className="row">
                     <div className="col s12">
+                    {this.state.shred ? (
                         <ShredPlayer
                             walkieTalkie={this.walkieTalkie}
-                            matrix={this.state.matrix}
+                            matrix={this.state.shred.matrix}
                             id={this.state.user_id}
                         />
+                    ) : ("No Shred")}
                     </div>
                 </div>
             </div>
 
             <div>
-                <SubmitComment />
+                <SubmitComment 
+                cellphone={this.cellphone}
+                onChange={this.handleInputChange}
+                postComment={this.postComment}
+                />
             </div>
             <div>
                 {this.state.comments.length ? (
