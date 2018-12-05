@@ -19,7 +19,8 @@ class Posted extends Component {
     state = {
         user_id: "Person",
         matrix: this.startingMatrix,
-        comments: [{user: "Joe", body: "This is amazing! But it's no Cookie Clicker. :'("}, {user: "JR", body: "I might've done things a little differently, but it's not too bad."}, {user: "Zack", body: "I'm sad I got a job because this is so awesome!"}]
+        comments: [{user: "Joe", body: "This is amazing! But it's no Cookie Clicker. :'("}, {user: "JR", body: "I might've done things a little differently, but it's not too bad."}, {user: "Zack", body: "I'm sad I got a job because this is so awesome!"}],
+        comment: ""
     }
 
     componentDidMount() {
@@ -39,6 +40,10 @@ class Posted extends Component {
         this.setState({matrix: matrix});
     }
 
+    cellphone = comment => {
+        API.postComment({ comment: comment }, props.match.params.postId)
+    }
+
     upvote = (id, votes) => {
         let newVotes = votes + 1;
         API.vote(newVotes, id)
@@ -51,6 +56,28 @@ class Posted extends Component {
         API.vote(newVotes, id)
         .then(console.log("downvoted #" + id))
         .catch(err => console.log(err));
+
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target
+        this.setState({
+            [name]: value
+        })
+    }
+
+    postComment = event => {
+
+        event.preventDefault();
+
+        let comment = {
+            comment: this.state.comment
+        }
+
+        API.postComment
+            .then(function(res){
+                console.log(res.data.comment)
+            })
 
     }
 
@@ -71,7 +98,11 @@ class Posted extends Component {
             </div>
 
             <div>
-                <SubmitComment />
+                <SubmitComment 
+                cellphone={this.cellphone}
+                onChange={this.handleInputChange}
+                postComment={this.postComment}
+                />
             </div>
             <div>
                 {this.state.comments.length ? (

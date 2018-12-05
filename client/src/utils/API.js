@@ -23,5 +23,9 @@ export default {
 
     getPostShred: function(id) {
         return axios.get("/api/posts/" + id);
+    },
+
+    postComment: function(comment, id) {
+        return axios.post("/api/posts/" + id + "/comments", comment)
     }
 }
