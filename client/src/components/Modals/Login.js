@@ -26,8 +26,10 @@ class Login extends React.Component {
             password: this.state.password
         }
 
+        let passwordLS = "ac" + user.password + "x0!"
+
         localStorage.setItem("username", user.username);
-        localStorage.setItem("password", user.password);
+        localStorage.setItem("password", passwordLS);
 
         API.loginUser({ user: user })
             .then(function(res){

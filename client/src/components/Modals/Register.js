@@ -3,7 +3,6 @@ import { Modal } from 'react-materialize';
 import API from "../../utils/API"
 
 class Register extends React.Component {
-    //when saving password, add simple encoding
 
     state = {
         username: "",
@@ -25,13 +24,14 @@ class Register extends React.Component {
             password: this.state.password
         }
 
+        let passwordLS = "ac" + user.password + "x0!"
+
         localStorage.setItem("username", user.username);
-        localStorage.setItem("password", user.password);
+        localStorage.setItem("password", passwordLS);
 
         API.saveUser({ user: user })
             .then(function(res){
-                console.log(res)
-                localStorage.setItem("token", res.data.user.token);
+                res.sendFile("../../client/public/index.html");
             })
     }
 
@@ -55,16 +55,16 @@ class Register extends React.Component {
                             </div>
                         </div>
                     </div> */}
-                    <div className="row">
+                    <div class="row">
                         <div className="input-field col s12">
                             <input id="username" type="text" className="validate" name="username" onChange={this.handleInputChange} value={this.state.username}/>
-                            <label htmlFor="username">Username</label>
+                            <label for="username">Username</label>
                         </div>
                     </div>
-                    <div className="row">
+                    <div class="row">
                         <div className="input-field col s12">
                             <input id="password" type="password" className="validate" name="password" onChange={this.handleInputChange} value={this.state.password}/>
-                            <label htmlFor="password">Password</label>
+                            <label for="password">Password</label>
                             <button onClick={this.saveUser} className="btn waves-effect waves-light" type="submit" name="action">Submit
                                 <i className="material-icons right">send</i>
                             </button> 
