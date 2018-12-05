@@ -21,6 +21,10 @@ var post = new Schema ({
     timeStamp: {
         type: Date,
         default: Date.now
+    },
+    votes: {
+        type: Number,
+        default: 0
     }
 });
 
