@@ -61,6 +61,7 @@ class Main extends Component {
                                 <Shred
                                     key={shred._id}
                                     user_id={shred._id}
+                                    shred_id={shred._id}
                                     //votes={shred.votes}
                                     votes= "120"
                                     // upvote={this.upvote}

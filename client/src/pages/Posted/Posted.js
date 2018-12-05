@@ -18,12 +18,14 @@ class Posted extends Component {
 
     state = {
         user_id: "Person",
+        // post_id: window.location.href.substring(window.location.href.indexOf("posted/") + 7),
         matrix: this.startingMatrix,
         comments: [{user: "Joe", body: "This is amazing! But it's no Cookie Clicker. :'("}, {user: "JR", body: "I might've done things a little differently, but it's not too bad."}, {user: "Zack", body: "I'm sad I got a job because this is so awesome!"}]
     }
 
     componentDidMount() {
-        this.getPostShred();
+        // this.getPostShred(this.state.post_id);
+        console.log("Post id: " + this.state.post_id)
     }
 
     getPostShred = (id) => {
@@ -61,11 +63,11 @@ class Posted extends Component {
                 <h2>{this.state.user_id}'s Shred</h2>
                 <div className="row">
                     <div className="col s12">
-                    <ShredPlayer
-                        walkieTalkie={this.walkieTalkie}
-                        matrix={this.state.matrix}
-                        id={this.state.user_id}
-                    />
+                        <ShredPlayer
+                            walkieTalkie={this.walkieTalkie}
+                            matrix={this.state.matrix}
+                            id={this.state.user_id}
+                        />
                     </div>
                 </div>
             </div>
