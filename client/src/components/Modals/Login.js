@@ -48,7 +48,10 @@ class Login extends React.Component {
                 // Saving token in localStorage
 
                 localStorage.setItem("token", res.data.user.token);
+                window.location.reload();
+
                 currentComp.setState({readyToRedirect: true})
+
             })
     }
 

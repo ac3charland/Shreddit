@@ -38,19 +38,29 @@ class Register extends React.Component {
         localStorage.setItem("username", user.username);
         localStorage.setItem("password", passwordLS);
 
+
         // Function to make api call to save new user
         // Req includes user obj with un and pw
         // Res includes user obj with id, un and token
         API.saveUser({ user: user })
-            .then(function(res){
-                if (res.data.user) {
-                    currentComp.setState({registered: true})
+        .then(function(res){
+            if (res.data.user) {
 
-                    // Setting state to trigger redirect
+                // Save token in localStorage
+                localStorage.setItem("token", res.data.user.token);
 
-                    currentComp.setState({readyToRedirect: true})
-                } 
-            })
+                currentComp.setState({registered: true})
+
+                // Setting state to trigger redirect
+
+                currentComp.setState({readyToRedirect: true})
+
+                window.location.reload();
+            }
+        })
+
+       
+
     }
 
     render(){
