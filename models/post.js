@@ -18,6 +18,10 @@ var post = new Schema ({
         ref: "Users"
     },
 
+    title: {
+        type: String,
+    },
+
     username: {
         type: String
     },

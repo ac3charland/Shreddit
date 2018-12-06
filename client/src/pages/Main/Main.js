@@ -15,6 +15,7 @@ class Main extends Component {
 
     componentDidMount(){
         this.getAllShreds();
+        this.decoding();
     }
 
     getAllShreds = () => {
@@ -51,6 +52,30 @@ class Main extends Component {
         this.setState({matrix: matrix});
     }
 
+    //Binary Math: decoding strings
+    decoding = () => {
+        //dummy shortened matrix
+        var fakeSong = [0, 512, 2146, 0, 8, 32];
+        var decodedMatrix = [];
+
+        for (let i = 0; i < fakeSong.length; i++) {
+            var matrixRow = fakeSong[i].toString(2).split('').map(function(x) {
+                return parseInt(x);
+            })
+
+            while (matrixRow.length < 16) {
+                matrixRow.unshift(0);
+            }
+
+            while (matrixRow.length > 16) {
+                matrixRow.shift();
+            }
+
+            decodedMatrix.push(matrixRow);
+            console.log(decodedMatrix);
+        }
+    }
+
     render(){
         return (
             <div>
@@ -73,6 +98,7 @@ class Main extends Component {
                                     votes={shred.votes}
                                     upvote={this.upvote}
                                     downvote={this.downvote}
+                                    title={this.title}
 
                                     walkieTalkie={this.walkieTalkie}
                                     matrix={shred.matrix}
