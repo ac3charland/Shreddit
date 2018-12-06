@@ -14,4 +14,5 @@ main {
     width: 100%;
     border-style: none none solid none;
     border-color: darkslategrey;
+    filter: hue-rotate(345deg);
 }

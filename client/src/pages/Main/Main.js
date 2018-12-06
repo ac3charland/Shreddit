@@ -79,11 +79,9 @@ class Main extends Component {
     render(){
         return (
             <div>
-
                 <div>
                     <Banner/>
                 </div>
-
                 <div className="container">
                     <div className="row">
 
@@ -98,7 +96,7 @@ class Main extends Component {
                                     votes={shred.votes}
                                     upvote={this.upvote}
                                     downvote={this.downvote}
-                                    title={this.title}
+                                    title={shred.title}
 
                                     walkieTalkie={this.walkieTalkie}
                                     matrix={shred.matrix}
@@ -107,9 +105,7 @@ class Main extends Component {
                         ) : (
                             <h3>No Shreds Posted Yet!</h3>
                         )}
-                        
                         </div>
-
                     </div>
                 </div>
             </div>

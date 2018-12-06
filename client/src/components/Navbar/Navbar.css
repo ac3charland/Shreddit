@@ -12,3 +12,11 @@ main {
     background-color: darkslategrey;
     padding: 0 .5rem;
 }
+
+.brand-logo {
+    font-family: 'Roboto Slab', serif;
+}
+
+.links {
+    font-family: 'Roboto Slab', serif;
+}

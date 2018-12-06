@@ -1,6 +1,11 @@
+body {
+    font-family: 'Roboto Slab', serif;
+}
+
 .shred {
     padding: 20px;
     margin: 20px;  
+    background-color: white;
 }
 .votes {
     margin-top: 40px;
@@ -13,4 +18,27 @@
 }
 .votesNumber {
     font-size: 30px;
+}
+
+.shred a:link {
+    color: turquoise;
+    font-family: 'Roboto Slab', serif;
+}
+
+.shred a:hover {
+    color: darkslategray;
+    font-family: 'Roboto Slab', serif;
+}
+
+.shred a:visited {
+    color: darkcyan;
+    font-family: 'Roboto Slab', serif;
+}
+
+.title-font {
+    font-family: 'Roboto Slab', serif;
+}
+
+.links {
+    font-family: 'Roboto Slab', serif;
 }

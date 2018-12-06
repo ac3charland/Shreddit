@@ -64,7 +64,7 @@ class Profile extends Component {
                     <Banner/>
                 </div>
 
-                <div className="container">
+                <div className="container title-area">
                     <h2>{this.state.username}'s Shreds</h2>
                     <div className="row">
                         <div className="col s12">
