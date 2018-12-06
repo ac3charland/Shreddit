@@ -15,6 +15,10 @@ var comment = new Schema({
             ref:"User"
         }
     ],
+
+    userName: {
+        type: String,
+    },
     
     timeStamp: {
         type: Date,

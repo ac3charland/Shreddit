@@ -19,7 +19,7 @@ class Posted extends Component {
     state = {
         shred: false,
         user_id: "Person",
-        // post_id: window.location.href.substring(window.location.href.indexOf("posted/") + 7),
+        post_id: "",
         matrix: this.startingMatrix,
         comments: [{user: "Joe", body: "This is amazing! But it's no Cookie Clicker. :'("}, {user: "JR", body: "I might've done things a little differently, but it's not too bad."}, {user: "Zack", body: "I'm sad I got a job because this is so awesome!"}],
         comment: ""
@@ -36,7 +36,10 @@ class Posted extends Component {
         API.getPostShred(id)
             .then(res => {
                 console.log(res.data);
-                this.setState({shred: res.data})
+                this.setState({
+                    shred: res.data,
+                    post_id: id
+                })
             })
             .catch(err => console.log(err));
     }
@@ -44,11 +47,6 @@ class Posted extends Component {
     walkieTalkie = matrix => {
         this.setState({matrix: matrix});
     }
-
-
-    // cellphone = comment => {
-    //     API.postComment({ comment: comment }, props.match.params.postId)
-    // }
 
 
     upvote = (id, votes) => {
@@ -68,6 +66,7 @@ class Posted extends Component {
 
     handleInputChange = event => {
         const { name, value } = event.target
+        console.log(value)
         this.setState({
             [name]: value
         })
@@ -78,10 +77,12 @@ class Posted extends Component {
         event.preventDefault();
 
         let comment = {
-            comment: this.state.comment
+            body: this.state.comment,
+            userName: localStorage.getItem("username")
+
         }
 
-        API.postComment
+        API.postComment(comment, this.state.post_id)
             .then(function(res){
                 console.log(res.data.comment)
             })
@@ -108,7 +109,6 @@ class Posted extends Component {
 
             <div>
                 <SubmitComment 
-                cellphone={this.cellphone}
                 onChange={this.handleInputChange}
                 postComment={this.postComment}
                 />
