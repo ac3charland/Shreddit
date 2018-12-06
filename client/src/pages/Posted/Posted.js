@@ -136,8 +136,8 @@ class Posted extends Component {
                 {this.state.comments.length ? (
                     this.state.comments.map(comment => (
                         <CommentBox
-                        username={comment.user}
-                        comment={comment.body}
+                            username={comment.username}
+                            comment={comment.body}
                         />
                     ))
                     ) : (
