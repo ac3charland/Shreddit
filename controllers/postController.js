@@ -36,6 +36,7 @@ module.exports = {
             .create({
                 //user_id: req.body.user_id,
                 username: req.body.username,
+                title: req.body.title,
                 matrix: req.body.matrix
             })
             .then(dbModel => res.json(dbModel))

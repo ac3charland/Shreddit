@@ -98,6 +98,7 @@ class Main extends Component {
                                     votes={shred.votes}
                                     upvote={this.upvote}
                                     downvote={this.downvote}
+                                    title={this.title}
 
                                     walkieTalkie={this.walkieTalkie}
                                     matrix={shred.matrix}

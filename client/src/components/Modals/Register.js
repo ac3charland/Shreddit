@@ -82,16 +82,16 @@ class Register extends React.Component {
                             </div>
                         </div>
                     </div> */}
-                    <div class="row">
+                    <div className="row">
                         <div className="input-field col s12">
                             <input id="username" type="text" className="validate" name="username" onChange={this.handleInputChange} value={this.state.username}/>
-                            <label for="username">Username</label>
+                            <label htmlFor="username">Username</label>
                         </div>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <div className="input-field col s12">
                             <input id="password" type="password" className="validate" name="password" onChange={this.handleInputChange} value={this.state.password}/>
-                            <label for="password">Password</label>
+                            <label htmlFor="password">Password</label>
                             <button onClick={this.saveUser} className="btn waves-effect waves-light" type="submit" name="action">Submit
                                 <i className="material-icons right">send</i>
                             </button> 

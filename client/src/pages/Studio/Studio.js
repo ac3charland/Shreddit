@@ -3,6 +3,8 @@ import Banner from "../../components/Banner";
 import ShredPlayer from "../../components/ShredPlayer";
 import API from "../../utils/API";
 import "./Studio.css";
+import M from "materialize-css/dist/js/materialize.min.js";
+import "materialize-css/dist/css/materialize.min.css";
 
 
 class Studio extends Component {
@@ -20,8 +22,8 @@ class Studio extends Component {
     state = {
         user_id: "user",
         username: "",
-        matrix: this.startingMatrix
-
+        matrix: this.startingMatrix,
+        title: ""
     }
 
     //BinaryMath - encoding strings
@@ -42,7 +44,7 @@ class Studio extends Component {
 
     componentDidMount() {
         const username = localStorage.getItem("username");
-        this.setState({username: username})
+        this.setState({username: username});
 
     }
 
@@ -54,14 +56,23 @@ class Studio extends Component {
         let shortenedMatrix = this.encoding();
         console.log(shortenedMatrix);
         // before saving to db, make sure saving current matrix
+        console.log(this.state.title);
         API.saveShred({
             // user_id: this.state.user_id,
 
             username: localStorage.getItem("username"),
-            matrix: this.state.matrix
+            matrix: this.state.matrix,
+            title: this.state.title
         })
         .then(res => console.log(res))
         .catch(err => console.log(err));
+    }
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        })
     }
 
     clear = () => {
@@ -86,10 +97,15 @@ class Studio extends Component {
                             <div className="row">
                                 <div className="col s1"></div>
                                 <div className="col s10 shred">
+                                <div className="input-field">
+                                    <input id="title" type="text" className="validate" name="title" onChange={this.handleInputChange} value={this.state.title}/>
+                                    <label htmlFor="title">Title</label>
+                                </div>
                                     <ShredPlayer
                                         walkieTalkie={this.walkieTalkie}
                                         matrix={this.state.matrix}
                                         id={this.state.user_id}
+                                        title={this.state.title}
                                     />
                                 </div>
                                 <div className="col s1"></div>
