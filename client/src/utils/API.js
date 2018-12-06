@@ -59,4 +59,5 @@ export default {
         // Return result from api/users/current call
         return axios.get("/api/users/current",  {headers : headers})
     }
+
 }

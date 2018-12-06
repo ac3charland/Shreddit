@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var post = new Schema ({
 
-    // name: {
+    // title: {
     //     type: String,
     //     trim: true,
     //     requried: "You must name your Shred in order to post."
@@ -41,6 +41,8 @@ var post = new Schema ({
         type: Array,
         default: []
     }
+
+    
 });
 
 var post = mongoose.model("Post", post);

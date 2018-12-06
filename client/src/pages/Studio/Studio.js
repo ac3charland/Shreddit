@@ -17,6 +17,7 @@ class Studio extends Component {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ]
+
     // TODO: Update this.state.matrix when user changes shredplayer component
 
     state = {
@@ -77,7 +78,7 @@ class Studio extends Component {
 
     clear = () => {
         // Set state matrix to 0 matrix
-        this.setState({matrix: this.startingMatrix});
+        window.location.reload();
     }
 
     render(){

@@ -5,16 +5,14 @@
 
 Shreddit is an in-browser application that allows users to create melodies in the Shreddit Studio and share them with the world!
 
-Check it out [here](//deployed link)
+<!-- Check it out [here](deployed link) -->
 
 ---
 ### How to Shred
 
 Creating a new Shred is simple! Just go to the Studio page, click on the boxes to select notes, and save your Shred to add it to the feed.
 
-// Screenshot of Studio page
-
----
+![A .gif displaying the Studio funcitonality](https://media.giphy.com/media/5hvRvBtI2CXQU6qXoF/giphy.gif)
 
 ### Additional Features
 
@@ -30,3 +28,8 @@ Creating a new Shred is simple! Just go to the Studio page, click on the boxes t
 * [Max Lettenberger](https://github.com/lettemax)
 * [Don Cohoon](https://github.com/AshymOR)
 * [Matt Gasper](https://github.com/mattypockets)
+
+---
+### Technologies used:
+
+React, Node.js, Express, MongoDB, Materialize, Tone.js, NexusUI
