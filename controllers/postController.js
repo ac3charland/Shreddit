@@ -13,7 +13,7 @@ module.exports = {
     findByUsername: function(req, res) {
         db.Post
             .find({'username': req.params.username})
-            .sort({votes: -1})
+            .sort({voteCount: -1})
             .populate('comment')
             .populate('vote')
             .then(dbModel => res.json(dbModel))

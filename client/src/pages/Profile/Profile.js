@@ -14,12 +14,22 @@ class Profile extends Component {
         shreds: [
             //{id: 1, shred: "Shred1", votes: 120}, {id: 2, shred: "Shred2", votes: 30}, {id: 3, shred:"Shred3", votes: 80}
         ],
+        otheruser: false,
     }
 
     componentDidMount(){
         const username = localStorage.getItem("username");
-        this.getUserShreds(username);
-        this.setState({username: username})
+        const otheruser = this.props.match.params.username
+        
+        this.setState({username: username, otheruser: otheruser}, () => {
+            if(otheruser){
+                this.setState({username: otheruser}, () => {
+                    this.getUserShreds(otheruser);
+                })  
+            } else {
+                this.getUserShreds(username);
+            }
+        })
     }
 
     getUserShreds = (username) => {
@@ -69,7 +79,8 @@ class Profile extends Component {
                                     shred_id={shred._id}
                                     votes={shred.voteCount}
                                     vote={this.vote}
-                                    title={this.title}
+                                    title={shred.title}
+                                    username={shred.username}
                                     walkieTalkie={this.walkieTalkie}
                                     matrix={shred.matrix}
                                 />

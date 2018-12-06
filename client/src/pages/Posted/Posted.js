@@ -94,6 +94,7 @@ class Posted extends Component {
             <>
             <div className="container">
                 <h2>{this.state.shred.username}'s Shred</h2>
+                <h5>{this.state.shred.title}</h5>
                 <div className="row">
                     <div className="col s12">
                     {this.state.shred ? (
