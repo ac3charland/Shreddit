@@ -43,5 +43,20 @@ export default {
 
     postComment: function(comment, id) {
         return axios.post("/api/posts/" + id + "/comments", comment)
+    },
+    
+    // Calls passport current user function
+    // GET req with token
+    // Successful res: user (id, un, token)
+    current: function(token) {
+        // Format token header string
+        let tokenHeader = 'Token ' + token;
+        // Create headers object including token 
+        let headers = {
+            'Content-Type': 'application/json',
+            'Authorization': tokenHeader
+        }
+        // Return result from api/users/current call
+        return axios.get("/api/users/current",  {headers : headers})
     }
 }
