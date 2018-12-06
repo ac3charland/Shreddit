@@ -7,10 +7,21 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    
     update: function(req, res) {
-        db.Post
-            .findOneAndUpdate({ _id: req.params.voteId }, req.body)
-            .then(dbModel => console.log(dbModel))
-            .catch(err => res.status(422).json(err));
+        db.Post.update(
+            { 
+                "_id": req.params.voteId, 
+                "voters": { "$ne": req.body.username }
+            },
+            {
+                "$inc": { "voteCount": req.body.incdec },
+                "$push": { "voters": req.body.username }
+            }
+        )
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
     }
+    
+
 }

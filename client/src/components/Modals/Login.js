@@ -22,41 +22,36 @@ class Login extends React.Component {
 
     // Function to login user using passport POST (api/users/login) function
     loginUser = (event) => {
-        
+
+        // Prevent default of submit button
         event.preventDefault();
 
+        // Get current component to use in deeper scope area
         const currentComp = this;
 
+        // Creating user object to send in login call
         let user = {
             username: this.state.username,
             password: this.state.password
         }
 
-        // Encoding of password for localStorage
-        let passwordLS = "ac" + user.password + "x0!"
-
-        // Setting username and pw in localStorage
+        // Setting username in localStorage
         localStorage.setItem("username", user.username);
-        localStorage.setItem("password", passwordLS);
 
         // Calling loginUser function, invoking api/users/login 
         // Req includes user obj with un and pw
         // Res includes user obj with id, un and token
         API.loginUser({ user: user })
             .then(function(res){
-                console.log("res from login: ", res.data.user);
-                // Saving token in localStorage
-
+                // Saving token in localStorage 
                 localStorage.setItem("token", res.data.user.token);
+
+                // Reload window to update navbar
                 window.location.reload();
 
+                // Set state to cause redirect
                 currentComp.setState({readyToRedirect: true})
-
             })
-    }
-
-    componentWillUnmount() {
-        
     }
 
     render(){

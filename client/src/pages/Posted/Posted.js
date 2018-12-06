@@ -35,6 +35,7 @@ class Posted extends Component {
     getPostData = (id) => {
         API.getPostShred(id)
             .then(res => {
+
                 const shred = res.data;
                 API.getPostComments(id)
                     .then(res => {
@@ -70,6 +71,7 @@ class Posted extends Component {
 
     handleInputChange = event => {
         const { name, value } = event.target
+        console.log(value)
         this.setState({
             [name]: value
         })
@@ -80,6 +82,7 @@ class Posted extends Component {
         event.preventDefault();
 
         let comment = {
+
             comment: this.state.comment,
             username: localStorage.getItem("username")
         }
@@ -98,6 +101,7 @@ class Posted extends Component {
             <>
             <div className="container">
                 <h2>{this.state.shred.username}'s Shred</h2>
+                <h5>{this.state.shred.title}</h5>
                 <div className="row">
                     <div className="col s12">
                     {this.state.shred ? (

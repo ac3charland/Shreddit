@@ -7,7 +7,8 @@ import "materialize-css/dist/css/materialize.min.css";
 
 class Navbar extends React.Component {
     state = {
-        loggedin: false
+        loggedin: false,
+        readyToRedirect: false
     }
 
     componentDidMount(){
@@ -44,6 +45,7 @@ class Navbar extends React.Component {
         console.log("logout");
         localStorage.removeItem("token")
         this.setState({ loggedin: false });
+        window.location.reload();
         return null;
     }
 
@@ -57,7 +59,6 @@ class Navbar extends React.Component {
         }
 
         return(
-
             <div>
                 <Login/>
                 <Register/>

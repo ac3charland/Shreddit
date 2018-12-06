@@ -18,6 +18,10 @@ var post = new Schema ({
         ref: "Users"
     },
 
+    title: {
+        type: String,
+    },
+
     username: {
         type: String
     },
@@ -27,10 +31,15 @@ var post = new Schema ({
         type: Date,
         default: Date.now
     },
-    
-    votes: {
+
+    voteCount: {
         type: Number,
         default: 0
+    },
+    
+    voters: {
+        type: Array,
+        default: []
     }
 });
 

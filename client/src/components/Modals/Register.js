@@ -23,21 +23,16 @@ class Register extends React.Component {
     saveUser = (event) => {
         event.preventDefault();
 
-        // Get current component here to access in tricky scope area
-        let currentComp = this;
+        // Get current component to use in deeper scope area
+        const currentComp = this;
 
         let user = {
             username: this.state.username,
             password: this.state.password
         }
 
-        // Encoding password for saving in localStorage
-        let passwordLS = "ac" + user.password + "x0!"
-
-        // Saving un and pw in localStorage
+        // Saving un in localStorage
         localStorage.setItem("username", user.username);
-        localStorage.setItem("password", passwordLS);
-
 
         // Function to make api call to save new user
         // Req includes user obj with un and pw
@@ -45,22 +40,16 @@ class Register extends React.Component {
         API.saveUser({ user: user })
         .then(function(res){
             if (res.data.user) {
-
                 // Save token in localStorage
                 localStorage.setItem("token", res.data.user.token);
-
+                // Set state.registered to true
                 currentComp.setState({registered: true})
-
-                // Setting state to trigger redirect
-
+                // Set state.readyToRedirect to true, to trigger redirect
                 currentComp.setState({readyToRedirect: true})
-
+                // Reload window to update navbar
                 window.location.reload();
             }
         })
-
-       
-
     }
 
     render(){
@@ -82,16 +71,16 @@ class Register extends React.Component {
                             </div>
                         </div>
                     </div> */}
-                    <div class="row">
+                    <div className="row">
                         <div className="input-field col s12">
                             <input id="username" type="text" className="validate" name="username" onChange={this.handleInputChange} value={this.state.username}/>
-                            <label for="username">Username</label>
+                            <label htmlFor="username">Username</label>
                         </div>
                     </div>
-                    <div class="row">
+                    <div className="row">
                         <div className="input-field col s12">
                             <input id="password" type="password" className="validate" name="password" onChange={this.handleInputChange} value={this.state.password}/>
-                            <label for="password">Password</label>
+                            <label htmlFor="password">Password</label>
                             <button onClick={this.saveUser} className="btn waves-effect waves-light" type="submit" name="action">Submit
                                 <i className="material-icons right">send</i>
                             </button> 
