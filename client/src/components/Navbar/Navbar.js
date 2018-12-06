@@ -66,7 +66,7 @@ class Navbar extends React.Component {
                 <nav className="navbar-fixed">
                     <div className="nav-wrapper">
                         <a href="/" className="brand-logo"><i className="fas fa-play"></i> Shreddit</a>
-                        <ul className="right">
+                        <ul className="links right">
                             {navlinks}
                         </ul>
                     </div>

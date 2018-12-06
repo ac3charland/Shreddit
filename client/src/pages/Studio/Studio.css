@@ -5,3 +5,15 @@
     margin: 20px 10px;
     background-color: darkslategrey !important;
 }
+
+.shred-area {
+    background-color: white;
+}
+
+.title-area {
+    color: whitesmoke;
+}
+
+.input-field {
+    color: black;
+}
