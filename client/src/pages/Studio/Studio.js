@@ -24,6 +24,22 @@ class Studio extends Component {
 
     }
 
+    //BinaryMath - encoding strings
+    encoding = () => {
+        let shortenedMatrix = [];
+
+        for (let i = 0; i < this.startingMatrix.length; i++) {
+            var matrixString = "";
+            for (let j = 0; j < this.startingMatrix[i].length; j++) {
+                if (this.startingMatrix[i][j]) {matrixString += "1"}
+                else {matrixString += "0"}
+            }
+            console.log(matrixString);
+            shortenedMatrix.push(parseInt(matrixString, 2));
+        }
+        return shortenedMatrix;
+    }
+
     componentDidMount() {
         const username = localStorage.getItem("username");
         this.setState({username: username})
@@ -35,6 +51,8 @@ class Studio extends Component {
     }
 
     save = () => {
+        let shortenedMatrix = this.encoding();
+        console.log(shortenedMatrix);
         // before saving to db, make sure saving current matrix
         API.saveShred({
             // user_id: this.state.user_id,
