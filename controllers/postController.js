@@ -10,6 +10,16 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    findByUsername: function(req, res) {
+        db.Post
+            .find({'username': req.params.username})
+            .sort({votes: -1})
+            .populate('comment')
+            .populate('vote')
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
+    
     findById: function(req, res) {
         db.Post
             .findById(req.params.postId)
@@ -24,7 +34,7 @@ module.exports = {
     create: function(req, res) {
         db.Post
             .create({
-                user_id: req.body.user_id,
+                //user_id: req.body.user_id,
                 username: req.body.username,
                 matrix: req.body.matrix
             })

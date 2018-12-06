@@ -12,6 +12,7 @@ var post = new Schema ({
 
     matrix: Array, 
 
+
     user_id: {
         type: Schema.Types.ObjectId,
         ref: "Users"
@@ -20,6 +21,7 @@ var post = new Schema ({
     username: {
         type: String
     },
+
     
     timeStamp: {
         type: Date,

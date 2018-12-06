@@ -8,7 +8,7 @@ import API from "../../utils/API"
 class Profile extends Component {
 
     state = {
-        name: "Your",
+        username: "",
         joinDate: "11/30/18",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum sed nulla et rutrum. Phasellus interdum ex et lacus pellentesque sodales. Fusce sollicitudin suscipit ligula sit amet dictum. Donec sagittis ligula ut sapien rhoncus interdum. In id purus vel tellus molestie consequat. Aenean commodo ante ac tincidunt tincidunt. Quisque diam odio, elementum sed placerat in, rhoncus sit amet odio. Sed et turpis vel augue fermentum bibendum. Nam congue tortor vel enim molestie vestibulum.",
         shreds: [
@@ -17,16 +17,39 @@ class Profile extends Component {
     }
 
     componentDidMount(){
-        this.getAllShreds();
+        const username = localStorage.getItem("username");
+        this.getUserShreds(username);
+        this.setState({username: username})
     }
 
-    getAllShreds = () => {
-        API.getAllShreds()
+    getUserShreds = (username) => {
+        API.getUserShreds(username)
             .then(res => {
                 console.log(res.data);
                 this.setState({shreds: res.data})
             })
             .catch(err => console.log(err));
+    }
+
+    upvote = (id, votes) => {
+        let newVotes = votes + 1;
+        let updateVotes = {
+            votes: newVotes
+        }
+        API.vote(updateVotes, id)
+            .then(this.getUserShreds(this.state.username))
+            .catch(err => console.log(err));
+    }
+
+    downvote = (id, votes) => {
+        let newVotes = votes - 1;
+        let updateVotes = {
+            votes: newVotes
+        }
+
+        API.vote(updateVotes, id)
+        .then(this.getUserShreds(this.state.username))
+        .catch(err => console.log(err));
     }
 
     walkieTalkie = matrix => {
@@ -42,20 +65,22 @@ class Profile extends Component {
                 </div>
 
                 <div className="container">
-                    <h2>{this.state.name} Shreds</h2>
+                    <h2>{this.state.username}'s Shreds</h2>
                     <div className="row">
                         <div className="col s12">
                         {this.state.shreds.length ? (
                             this.state.shreds.map(shred => (
                                 <Shred
-                                key={shred._id}
-                                user_id={shred._id}
-                                //votes={shred.votes}
-                                votes= "120"
-                                // upvote={this.upvote}
-                                // downvote={this.downvote}
-                                walkieTalkie={this.walkieTalkie}
-                                matrix={shred.matrix}
+                                    key={shred._id}
+                                    id={shred._id}
+                                    user_id={shred._id}
+                                    shred_id={shred._id}
+                                    votes={shred.votes}
+                                    upvote={this.upvote}
+                                    downvote={this.downvote}
+
+                                    walkieTalkie={this.walkieTalkie}
+                                    matrix={shred.matrix}
                                 />
                             ))
                         ) : (
