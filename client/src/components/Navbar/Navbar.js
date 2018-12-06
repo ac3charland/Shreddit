@@ -9,12 +9,7 @@ import "materialize-css/dist/css/materialize.min.css";
 class Navbar extends React.Component {
     state = {
         loggedin: false,
-<<<<<<< HEAD
-        username: "",
-        password: ""
-=======
         readyToRedirect: false
->>>>>>> master
     }
 
     componentDidMount(){
