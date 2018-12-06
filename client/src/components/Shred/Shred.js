@@ -8,6 +8,11 @@ const Shred = props => (
             <div className="row">
 
                 <div className="col s2 votes">
+                    <div classNmae="row">
+                        <div className="col s12 username center-align">
+                            <h6>By: <a href={"/profile/" + props.username}>{props.username}</a></h6>
+                        </div>
+                    </div>
                     <div className="row">
                         <div className="col s12 center-align">
                             <i className="material-icons arrow" onClick={() => props.vote(props.id, 1)}>arrow_upward</i>
@@ -25,7 +30,7 @@ const Shred = props => (
                     </div>
                 </div>
                 <div className="col m10">
-                    <h3>{props.title}</h3> 
+                    <h5>{props.title}</h5> 
                     <hr></hr>
                 </div>
                 <div className="col s10">
