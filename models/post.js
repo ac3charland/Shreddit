@@ -12,6 +12,11 @@ var post = new Schema ({
 
     matrix: Array, 
 
+    username: {
+        type: String,
+       
+    },
+
     user_id: 
         {
             type: Schema.Types.ObjectId,

@@ -21,6 +21,10 @@ export default {
         return axios.get("/api/posts/");
     },
 
+    getUserShreds: function(username){
+        return axios.get("/api/posts/user/" + username)
+    },
+
     getPostShred: function(id) {
         return axios.get("/api/posts/" + id);
     },
