@@ -45,9 +45,9 @@ class Posted extends Component {
         this.setState({matrix: matrix});
     }
 
-    cellphone = comment => {
-        API.postComment({ comment: comment }, props.match.params.postId)
-    }
+    // cellphone = comment => {
+    //     API.postComment({ comment: comment }, props.match.params.postId)
+    // }
 
     upvote = (id, votes) => {
         let newVotes = votes + 1;
@@ -90,7 +90,7 @@ class Posted extends Component {
         return (
             <>
             <div className="container">
-                <h2>{this.state.user_id}'s Shred</h2>
+                <h2>{this.state.shred.username}'s Shred</h2>
                 <div className="row">
                     <div className="col s12">
                     {this.state.shred ? (
