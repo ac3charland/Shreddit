@@ -92,14 +92,18 @@ router.post('/login', auth.optional, (req, res, next) => {
 /////////////////////////////////////////////////////////////////////
 //GET current route (required, only authenticated users have access)
 router.get('/current', auth.required, (req, res, next) => {
+  // Get id out of req
   const { payload: { id } } = req;
-
+  // Find user by id
   return Users.findById(id)
+    // 1. Take returned user object and
     .then((user) => {
+      // If no user returned
       if(!user) {
+        // Send status
         return res.sendStatus(400);
       }
-
+      // 2. Return user object with token
       return res.json({ user: user.toAuthJSON() });
     });
 });

@@ -45,10 +45,8 @@ class Login extends React.Component {
             .then(function(res){
                 // Saving token in localStorage 
                 localStorage.setItem("token", res.data.user.token);
-
                 // Reload window to update navbar
                 window.location.reload();
-
                 // Set state to cause redirect
                 currentComp.setState({readyToRedirect: true})
             })
