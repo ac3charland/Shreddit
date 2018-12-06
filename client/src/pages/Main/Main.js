@@ -10,16 +10,19 @@ class Main extends Component {
     state = {
         shreds: [
             //{id: 1, shred: "Shred1", votes: 120}, {id: 2, shred: "Shred2", votes: 30}, {id: 3, shred:"Shred3", votes: 80}
-        ]
+        ],
+        username: ""
     }
 
     componentDidMount(){
         this.getAllShreds();
-        this.decoding();
+        this.decoding();        
+        const username = localStorage.getItem("username");
+        this.setState({username: username})
     }
 
     getAllShreds = () => {
-        API.getAllShreds()
+        return API.getAllShreds()
             .then(res => {
                 console.log(res.data);
                 this.setState({shreds: res.data})
@@ -27,25 +30,17 @@ class Main extends Component {
             .catch(err => console.log(err));
     }
 
-    upvote = (id, votes) => {
-        let newVotes = votes + 1;
-        let updateVotes = {
-            votes: newVotes
+    vote = (id, incdec) => {
+        let user = this.state.username
+
+        let data = {
+            incdec: incdec,
+            username: user
         }
-        API.vote(updateVotes, id)
-            .then(this.getAllShreds())
+
+        API.vote(data, id)
+            .then(() => this.getAllShreds())
             .catch(err => console.log(err));
-    }
-
-    downvote = (id, votes) => {
-        let newVotes = votes - 1;
-        let updateVotes = {
-            votes: newVotes
-        }
-
-        API.vote(updateVotes, id)
-        .then(this.getAllShreds())
-        .catch(err => console.log(err));
     }
 
     walkieTalkie = matrix => {
@@ -95,11 +90,10 @@ class Main extends Component {
                                     id={shred._id}
                                     user_id={shred._id}
                                     shred_id={shred._id}
-                                    votes={shred.votes}
-                                    upvote={this.upvote}
-                                    downvote={this.downvote}
-                                    title={this.title}
-
+                                    votes={shred.voteCount}
+                                    vote={this.vote}
+                                    title={shred.title}
+                                    username={shred.username}
                                     walkieTalkie={this.walkieTalkie}
                                     matrix={shred.matrix}
                                 />

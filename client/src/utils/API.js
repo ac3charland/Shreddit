@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-    vote: function(votes, id){
-        return axios.put("/api/votes/" + id, votes);
+    vote: function(data, id){
+        return axios.put("/api/votes/" + id, data);
     },
 
     saveShred: function(shredData) {
@@ -33,12 +33,31 @@ export default {
         return axios.get("/api/posts/user/" + username)
     },
 
+    getPostComments: function(postId) {
+        return axios.get("/api/comments/" + postId)
+    },
+
     getPostShred: function(id) {
         return axios.get("/api/posts/" + id);
     },
 
     postComment: function(comment, id) {
         return axios.post("/api/posts/" + id + "/comments", comment)
+    },
+    
+    // Calls passport current user function
+    // GET req with token
+    // Successful res: user (id, un, token)
+    current: function(token) {
+        // Format token header string
+        let tokenHeader = 'Token ' + token;
+        // Create headers object including token 
+        let headers = {
+            'Content-Type': 'application/json',
+            'Authorization': tokenHeader
+        }
+        // Return result from api/users/current call
+        return axios.get("/api/users/current",  {headers : headers})
     }
 
 }

@@ -14,12 +14,22 @@ class Profile extends Component {
         shreds: [
             //{id: 1, shred: "Shred1", votes: 120}, {id: 2, shred: "Shred2", votes: 30}, {id: 3, shred:"Shred3", votes: 80}
         ],
+        otheruser: false,
     }
 
     componentDidMount(){
         const username = localStorage.getItem("username");
-        this.getUserShreds(username);
-        this.setState({username: username})
+        const otheruser = this.props.match.params.username
+        
+        this.setState({username: username, otheruser: otheruser}, () => {
+            if(otheruser){
+                this.setState({username: otheruser}, () => {
+                    this.getUserShreds(otheruser);
+                })  
+            } else {
+                this.getUserShreds(username);
+            }
+        })
     }
 
     getUserShreds = (username) => {
@@ -31,25 +41,17 @@ class Profile extends Component {
             .catch(err => console.log(err));
     }
 
-    upvote = (id, votes) => {
-        let newVotes = votes + 1;
-        let updateVotes = {
-            votes: newVotes
+    vote = (id, incdec) => {
+        let user = this.state.username
+
+        let data = {
+            incdec: incdec,
+            username: user
         }
-        API.vote(updateVotes, id)
-            .then(this.getUserShreds(this.state.username))
+
+        API.vote(data, id)
+            .then(this.getAllShreds())
             .catch(err => console.log(err));
-    }
-
-    downvote = (id, votes) => {
-        let newVotes = votes - 1;
-        let updateVotes = {
-            votes: newVotes
-        }
-
-        API.vote(updateVotes, id)
-        .then(this.getUserShreds(this.state.username))
-        .catch(err => console.log(err));
     }
 
     walkieTalkie = matrix => {
@@ -75,10 +77,10 @@ class Profile extends Component {
                                     id={shred._id}
                                     user_id={shred._id}
                                     shred_id={shred._id}
-                                    votes={shred.votes}
-                                    upvote={this.upvote}
-                                    downvote={this.downvote}
-
+                                    votes={shred.voteCount}
+                                    vote={this.vote}
+                                    title={shred.title}
+                                    username={shred.username}
                                     walkieTalkie={this.walkieTalkie}
                                     matrix={shred.matrix}
                                 />
