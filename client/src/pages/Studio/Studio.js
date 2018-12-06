@@ -5,6 +5,7 @@ import API from "../../utils/API";
 import "./Studio.css";
 import M from "materialize-css/dist/js/materialize.min.js";
 import "materialize-css/dist/css/materialize.min.css";
+import  { Redirect } from 'react-router-dom';
 
 
 class Studio extends Component {
@@ -24,7 +25,8 @@ class Studio extends Component {
         user_id: "user",
         username: "",
         matrix: this.startingMatrix,
-        title: ""
+        title: "",
+        readyToRedirect: false
     }
 
     //BinaryMath - encoding strings
@@ -59,13 +61,11 @@ class Studio extends Component {
         // before saving to db, make sure saving current matrix
         console.log(this.state.title);
         API.saveShred({
-            // user_id: this.state.user_id,
-
             username: localStorage.getItem("username"),
             matrix: this.state.matrix,
             title: this.state.title
         })
-        .then(res => console.log(res))
+        .then(res => {this.setState({ readyToRedirect: true })})
         .catch(err => console.log(err));
     }
 
@@ -82,8 +82,7 @@ class Studio extends Component {
     }
 
     render(){
-        return (
-            <div>
+        return ( this.state.readyToRedirect?<Redirect to='/Profile'/> : <div>
                 <div>
                     <Banner />
                 </div>
