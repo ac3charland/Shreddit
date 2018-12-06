@@ -6,6 +6,8 @@ export default {
     },
 
     saveShred: function(shredData) {
+        console.log("Posting shred with ShredData: ")
+        console.log(shredData)
         return axios.post("api/posts", shredData);
     },
 

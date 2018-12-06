@@ -52,7 +52,6 @@ router.post('/', auth.optional, (req, res, next) => {
 // Res only returns if un and pw match user in db
 router.post('/login', auth.optional, (req, res, next) => {
   const { body: { user } } = req;
-
   if(!user.username) {
     return res.status(422).json({
       errors: {

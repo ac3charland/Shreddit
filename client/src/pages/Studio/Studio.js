@@ -36,10 +36,10 @@ class Studio extends Component {
 
     save = () => {
         // before saving to db, make sure saving current matrix
-
         API.saveShred({
             // user_id: this.state.user_id,
-            username: this.state.username,
+
+            username: localStorage.getItem("username"),
             matrix: this.state.matrix
         })
         .then(res => console.log(res))

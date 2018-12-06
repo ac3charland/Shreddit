@@ -43,19 +43,18 @@ class Register extends React.Component {
         // Res includes user obj with id, un and token
         API.saveUser({ user: user })
             .then(function(res){
-                alert("a")
                 if (res.data.user) {
                     currentComp.setState({registered: true})
+
                     // Setting state to trigger redirect
+
                     currentComp.setState({readyToRedirect: true})
-                } else {
-                    alert("else")
-                }
+                } 
             })
     }
 
     render(){
-        return( this.state.readyToRedirect?<Redirect to='/Profile'/> : <Modal
+        return( this.state.readyToRedirect?<Redirect to='/'/> : <Modal
                 id="RegisterModal"
                 header='Register'>
                 <form>

@@ -45,9 +45,11 @@ class Posted extends Component {
         this.setState({matrix: matrix});
     }
 
+
     // cellphone = comment => {
     //     API.postComment({ comment: comment }, props.match.params.postId)
     // }
+
 
     upvote = (id, votes) => {
         let newVotes = votes + 1;
