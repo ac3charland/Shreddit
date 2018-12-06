@@ -12,21 +12,22 @@ var post = new Schema ({
 
     matrix: Array, 
 
-    username: {
-        type: String,
-       
+
+    user_id: {
+        type: Schema.Types.ObjectId,
+        ref: "Users"
     },
 
-    user_id: 
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Users"
-        },
+    username: {
+        type: String
+    },
+
     
     timeStamp: {
         type: Date,
         default: Date.now
     },
+    
     votes: {
         type: Number,
         default: 0

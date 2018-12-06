@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Modal } from 'react-materialize';
 import API from "../../utils/API";
+import { Redirect } from 'react-router-dom';
+import { PromiseProvider } from "mongoose";
 
 class Login extends React.Component {
     //when saving password, add simple encoding
@@ -8,6 +10,7 @@ class Login extends React.Component {
     state = {
         username: "",
         password: "",
+        readyToRedirect: false
     }
 
     handleInputChange = event => {
@@ -17,25 +20,38 @@ class Login extends React.Component {
         })
     }
 
+    // Function to login user using passport POST (api/users/login) function
     loginUser = (event) => {
         
         event.preventDefault();
+
+        const currentComp = this;
 
         let user = {
             username: this.state.username,
             password: this.state.password
         }
 
+        // Encoding of password for localStorage
         let passwordLS = "ac" + user.password + "x0!"
 
+        // Setting username and pw in localStorage
         localStorage.setItem("username", user.username);
         localStorage.setItem("password", passwordLS);
 
+        // Calling loginUser function, invoking api/users/login 
+        // Req includes user obj with un and pw
+        // Res includes user obj with id, un and token
         API.loginUser({ user: user })
             .then(function(res){
                 console.log("res from login: ", res.data.user);
+                // Saving token in localStorage
+
                 localStorage.setItem("token", res.data.user.token);
                 window.location.reload();
+
+                currentComp.setState({readyToRedirect: true})
+
             })
     }
 
@@ -44,7 +60,7 @@ class Login extends React.Component {
     }
 
     render(){
-        return(
+        return(this.state.readyToRedirect? <Redirect to="/"/> :
             <Modal
                 id="logInModal"
                 header='Login'>
