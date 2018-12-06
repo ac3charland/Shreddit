@@ -72,6 +72,7 @@ if (!isProduction) {
   app.use(errorHandler());
 }
 
+
 //Error handlers & middlewares
 if(!isProduction) {
   app.use((req, res, next, err) => {
