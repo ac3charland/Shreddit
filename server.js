@@ -56,6 +56,8 @@ if(!isProduction) {
   app.use(errorHandler());
 }
 
+
+
 //Configure Mongoose
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shreddit');
 mongoose.set('debug', true);
