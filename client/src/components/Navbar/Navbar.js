@@ -5,6 +5,7 @@ import  Register  from "../Modals/Register";
 import M from "materialize-css/dist/js/materialize.min.js";
 import "materialize-css/dist/css/materialize.min.css";
 
+
 class Navbar extends React.Component {
     state = {
         loggedin: false,
@@ -65,7 +66,7 @@ class Navbar extends React.Component {
                 <nav className="navbar-fixed">
                     <div className="nav-wrapper">
                         <a href="/" className="brand-logo"><i className="fas fa-play"></i> Shreddit</a>
-                        <ul className="right">
+                        <ul className="links right">
                             {navlinks}
                         </ul>
                     </div>

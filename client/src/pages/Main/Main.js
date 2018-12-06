@@ -74,11 +74,9 @@ class Main extends Component {
     render(){
         return (
             <div>
-
                 <div>
                     <Banner/>
                 </div>
-
                 <div className="container">
                     <div className="row">
 
@@ -101,9 +99,7 @@ class Main extends Component {
                         ) : (
                             <h3>No Shreds Posted Yet!</h3>
                         )}
-                        
                         </div>
-
                     </div>
                 </div>
             </div>

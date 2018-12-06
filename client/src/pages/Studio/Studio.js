@@ -17,6 +17,7 @@ class Studio extends Component {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ]
+
     // TODO: Update this.state.matrix when user changes shredplayer component
 
     state = {
@@ -77,7 +78,7 @@ class Studio extends Component {
 
     clear = () => {
         // Set state matrix to 0 matrix
-        this.setState({matrix: this.startingMatrix});
+        window.location.reload();
     }
 
     render(){
@@ -86,14 +87,12 @@ class Studio extends Component {
                 <div>
                     <Banner />
                 </div>
-
-                <div className="row container">
+                <div className="row container title-area">
                     <div className="col s12">
                         <div className="row">
                             <h2 className="col s12">Your Studio</h2>
                         </div>
-
-                        <div className="z-depth-4">
+                        <div className="z-depth-4 shred-area">
                             <div className="row">
                                 <div className="col s1"></div>
                                 <div className="col s10 shred">
@@ -110,7 +109,6 @@ class Studio extends Component {
                                 </div>
                                 <div className="col s1"></div>
                             </div>
-
                             <div className="row">
                                 <div className="col s12 center-align">
                                     <button class="btn waves-effect waves-light studiobtn" onClick={this.save}>Save
@@ -124,7 +122,6 @@ class Studio extends Component {
                         </div>
                     </div>
                 </div>
-
             </div>
         )
     }

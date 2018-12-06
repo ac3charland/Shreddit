@@ -3,7 +3,7 @@ import "./Banner.css";
 
 const Banner = () => (
     <div className="site-banner">
-        <img alt="Shreddit" src={window.location.origin + '/images/banner.jpg'}></img>
+        <img alt="Shreddit" src={window.location.origin + '/images/banner2.png'}></img>
     </div>
 )
 
