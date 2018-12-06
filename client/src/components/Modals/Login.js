@@ -35,6 +35,7 @@ class Login extends React.Component {
             .then(function(res){
                 console.log("res from login: ", res.data.user);
                 localStorage.setItem("token", res.data.user.token);
+                window.location.reload();
             })
     }
 

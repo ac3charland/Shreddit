@@ -35,20 +35,23 @@ class Register extends React.Component {
         localStorage.setItem("username", user.username);
         localStorage.setItem("password", passwordLS);
 
+
         API.saveUser({ user: user })
-            .then(function(res){
-                alert("a")
-                if (res.data.user) {
-                    currentComp.setState({registered: true})
-                    console.log("inside if")
-                    // route to main page
-                    // return <Redirect to='/'  />
-                    //return <Redirect to='/'/>
-                    currentComp.setState({readyToRedirect: true})
-                } else {
-                    alert("else")
-                }
-            })
+        .then(function(res){
+            if (res.data.user) {
+
+                // Save token in localStorage
+                localStorage.setItem("token", res.data.user.token);
+
+                currentComp.setState({registered: true})
+
+                // Setting state to trigger redirect
+
+                currentComp.setState({readyToRedirect: true})
+
+                window.location.reload();
+            }
+        })
     }
 
     render(){
