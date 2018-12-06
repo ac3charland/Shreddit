@@ -25,7 +25,7 @@ module.exports = {
             .findById(req.params.postId)
             .populate({
                 path: 'comment',
-                populate: { path: 'Users' }
+                // populate: { path: 'Users' }
             })
             .populate('vote')
             .then(dbModel => res.json(dbModel))

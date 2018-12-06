@@ -28,18 +28,24 @@ class Posted extends Component {
     componentDidMount() {
         const id = this.props.match.params.postId
         
-        this.getPostShred(id);
+        this.getPostData(id);
 
     }
 
-    getPostShred = (id) => {
+    getPostData = (id) => {
         API.getPostShred(id)
             .then(res => {
-                console.log(res.data);
-                this.setState({
-                    shred: res.data,
-                    post_id: id
-                })
+
+                const shred = res.data;
+                API.getPostComments(id)
+                    .then(res => {
+                        this.setState({
+                            shred: shred,
+                            post_id: id,
+                            comments: res.data
+                        })
+                    })
+                    .catch(err => console.log(err))
             })
             .catch(err => console.log(err));
     }
@@ -47,7 +53,6 @@ class Posted extends Component {
     walkieTalkie = matrix => {
         this.setState({matrix: matrix});
     }
-
 
     upvote = (id, votes) => {
         let newVotes = votes + 1;
@@ -77,15 +82,17 @@ class Posted extends Component {
         event.preventDefault();
 
         let comment = {
-            body: this.state.comment,
-            userName: localStorage.getItem("username")
 
+            comment: this.state.comment,
+            username: localStorage.getItem("username")
         }
 
         API.postComment(comment, this.state.post_id)
             .then(function(res){
-                console.log(res.data.comment)
+                console.log(res.data)
+                window.location.reload()
             })
+            .catch(err => console.log(err));
 
     }
 
@@ -109,10 +116,21 @@ class Posted extends Component {
             </div>
 
             <div>
-                <SubmitComment 
-                onChange={this.handleInputChange}
-                postComment={this.postComment}
-                />
+                <form>
+                    <div className="row">
+                        <div className="col s12">
+                            <div className="row">
+                                <div className="input-field col s12">
+                                    <textarea id="textarea1" className="materialize-textarea" name="comment" value={this.state.comment} onChange={this.handleInputChange}></textarea>
+                                    <label for="textarea1">Comment</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button onClick={this.postComment} className="btn waves-effect waves-light" type="submit" name="action">
+                            Submit <i className="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
             </div>
             <div>
                 {this.state.comments.length ? (

@@ -16,8 +16,8 @@ var comment = new Schema({
         }
     ],
 
-    userName: {
-        type: String,
+    username: {
+        type: String
     },
     
     timeStamp: {
@@ -25,12 +25,11 @@ var comment = new Schema({
         default: Date.now
     },
 
-    post_id: [
+    post_id:
         {
             type: Schema.Types.ObjectId,
             ref:"Post"
         }
-    ]
 });
 
 var comment = mongoose.model("Comment", comment);
