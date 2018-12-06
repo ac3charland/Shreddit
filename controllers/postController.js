@@ -4,7 +4,7 @@ module.exports = {
     findAll: function(req, res) {
         db.Post
             .find(req.query)
-            .sort({votes: -1})
+            .sort({voteCount: -1})
             .populate('comment')
             .populate('vote')
             .then(dbModel => res.json(dbModel))
@@ -13,7 +13,7 @@ module.exports = {
     findByUsername: function(req, res) {
         db.Post
             .find({'username': req.params.username})
-            .sort({votes: -1})
+            .sort({voteCount: -1})
             .populate('comment')
             .populate('vote')
             .then(dbModel => res.json(dbModel))
@@ -25,7 +25,7 @@ module.exports = {
             .findById(req.params.postId)
             .populate({
                 path: 'comment',
-                populate: { path: 'Users' }
+                // populate: { path: 'Users' }
             })
             .populate('vote')
             .then(dbModel => res.json(dbModel))

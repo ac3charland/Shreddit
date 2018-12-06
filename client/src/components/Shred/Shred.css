@@ -8,7 +8,10 @@ body {
     background-color: white;
 }
 .votes {
-    margin-top: 40px;
+    margin-top: 15px;
+}
+.username {
+    margin-bottom: 20px;
 }
 .arrow {
     font-size: 40px;
