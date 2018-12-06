@@ -99,7 +99,7 @@ class Posted extends Component {
     render(){
         return (
             <>
-            <div className="container">
+            <div className="container title">
                 <h2>{this.state.shred.username}'s Shred</h2>
                 <h5>{this.state.shred.title}</h5>
                 <div className="row">
@@ -115,18 +115,18 @@ class Posted extends Component {
                 </div>
             </div>
 
-            <div>
+            <div className="container">
                 <form>
                     <div className="row">
                         <div className="col s12">
                             <div className="row">
-                                <div className="input-field col s12">
+                                <div className="input-field comment-area col s12">
                                     <textarea id="textarea1" className="materialize-textarea" name="comment" value={this.state.comment} onChange={this.handleInputChange}></textarea>
                                     <label for="textarea1">Comment</label>
                                 </div>
                             </div>
                         </div>
-                        <button onClick={this.postComment} className="btn waves-effect waves-light" type="submit" name="action">
+                        <button onClick={this.postComment} className="btn waves-effect waves-light right" type="submit" name="action">
                             Submit <i className="material-icons right">send</i>
                         </button>
                     </div>

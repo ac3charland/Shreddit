@@ -6,12 +6,14 @@ body {
     padding: 20px;
     margin: 20px;  
     background-color: white;
+    color: black;
 }
 .votes {
     margin-top: 15px;
 }
 .username {
     margin-bottom: 20px;
+    margin-top: -15px;
 }
 .arrow {
     font-size: 40px;

@@ -13,6 +13,7 @@ main {
     max-height: 24rem;
     width: 100%;
     border-style: none none solid none;
-    border-color: darkslategrey;
+    border-color: rgba(64, 224, 208, 0.199);
+    border-width: .5rem;
     filter: hue-rotate(345deg);
 }
