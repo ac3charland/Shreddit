@@ -4,7 +4,19 @@ const router = require('express').Router();
 const auth = require('../auth');
 const Users = mongoose.model('Users');
 
-//POST new user route (optional, everyone has access)
+
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+////////////------ PASSPORT ROUTES -----------//////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+
+
+////////////------ USER SIGNUP ----------//////////
+// POST new user route (optional, everyone has access)
+// Req includes user obj with username and password
+// Res includes user obj with id, username and token
 router.post('/', auth.optional, (req, res, next) => {
   const { body: { user } } = req;
 
@@ -32,7 +44,12 @@ router.post('/', auth.optional, (req, res, next) => {
     .then(() => res.json({ user: finalUser.toAuthJSON() }));
 });
 
-//POST login route (optional, everyone has access)
+////////////------ USER LOGIN ----------///////////
+///////////////////////////////////////////////////
+// POST login route (optional, everyone has access)
+// Req includes user obj with username and password
+// Res includes user obj with id, username and token
+// Res only returns if un and pw match user in db
 router.post('/login', auth.optional, (req, res, next) => {
   const { body: { user } } = req;
 
@@ -68,6 +85,12 @@ router.post('/login', auth.optional, (req, res, next) => {
   })(req, res, next);
 });
 
+/////////--- AUTHORIZATION CALL FOR PROTECTED ROUTES ---///////////////
+///////////////////////////////////////////////////////////////////////
+// Req includes user obj with username and password AND token in header
+// Res includes user obj with id, username and token
+// Res only returns if un and pw match user in db and token is valid
+/////////////////////////////////////////////////////////////////////
 //GET current route (required, only authenticated users have access)
 router.get('/current', auth.required, (req, res, next) => {
   const { payload: { id } } = req;

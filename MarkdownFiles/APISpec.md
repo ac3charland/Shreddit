@@ -4,9 +4,9 @@
 | GET    | /api/posts | Data  | -   | [Posts] | Returns json containing several posts for display on the front page with comments joined |
 | GET    | /api/posts/:postId | Data | :postId | Post Object | Returns json containing a post, joined with its associated comments |
 | GET    | /api/users/:userId    | Data  | :userId  | User Object | Returns the user's data to the page (Posts, Username, potentially up/downvoted posts, posted comments) |
-| POST   | /api/users/  | Data | User Object | - | Creates a new user account & sends it to the DB |
-| GET   | /api/users/current | Post Object | User with token | Send user info w/ token to authorize |
-| POST | /api/users/login | Post Object | Username and password | User object and token | Send username and pw, get user object with token | 
+| POST   | /api/users/  | Data | User Object | User: id, un, token | Posts new user to db |
+| GET   | /api/users/current | User object with token header | User: id, un, token | Send user info w/ token to authorize, success means getting user: id, un, token back |
+| POST | /api/users/login | User Object | User: id, un, token | Login using username and password | 
 | POST   | /api/posts | Data  | Post Object  | -    | Sends a new post to the DB |
 | PUT    | /api/posts/:postId | Data | :postId, Updated Post Obj | - | Sends an updated post to replace the one in the DB with the given id |
 | DELETE | /api/posts/:postId | Data | :postId | - | Deletes the post in the DB with the given id. |

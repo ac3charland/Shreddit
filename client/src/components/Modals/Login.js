@@ -17,6 +17,7 @@ class Login extends React.Component {
         })
     }
 
+    // Function to login user using passport POST (api/users/login) function
     loginUser = (event) => {
         
         event.preventDefault();
@@ -26,14 +27,20 @@ class Login extends React.Component {
             password: this.state.password
         }
 
+        // Encoding of password for localStorage
         let passwordLS = "ac" + user.password + "x0!"
 
+        // Setting username and pw in localStorage
         localStorage.setItem("username", user.username);
         localStorage.setItem("password", passwordLS);
 
+        // Calling loginUser function, invoking api/users/login 
+        // Req includes user obj with un and pw
+        // Res includes user obj with id, un and token
         API.loginUser({ user: user })
             .then(function(res){
                 console.log("res from login: ", res.data.user);
+                // Saving token in localStorage
                 localStorage.setItem("token", res.data.user.token);
             })
     }
