@@ -21,7 +21,8 @@ class Posted extends Component {
         user_id: "Person",
         post_id: "",
         matrix: this.startingMatrix,
-        comments: [{user: "Joe", body: "This is amazing! But it's no Cookie Clicker. :'("}, {user: "JR", body: "I might've done things a little differently, but it's not too bad."}, {user: "Zack", body: "I'm sad I got a job because this is so awesome!"}],
+        comments: "",
+        //[{user: "Joe", body: "This is amazing! But it's no Cookie Clicker. :'("}, {user: "JR", body: "I might've done things a little differently, but it's not too bad."}, {user: "Zack", body: "I'm sad I got a job because this is so awesome!"}]
         comment: ""
     }
 
@@ -126,7 +127,7 @@ class Posted extends Component {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={this.postComment} className="btn waves-effect waves-light right" type="submit" name="action">
+                        <button onClick={this.postComment} className="btn waves-effect waves-light right postedbtn" type="submit" name="action">
                             Submit <i className="material-icons right">send</i>
                         </button>
                     </div>
@@ -141,9 +142,10 @@ class Posted extends Component {
                         />
                     ))
                     ) : (
-                    <h3>No comments have been posted yet!</h3>
+                    <h3 className="container defaultText">No comments have been posted yet!</h3>
                 )}
             </div>
+            
             </>
         )
     }
