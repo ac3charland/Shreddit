@@ -33,6 +33,10 @@ export default {
         return axios.get("/api/posts/user/" + username)
     },
 
+    getPostComments: function(postId) {
+        return axios.get("/api/comments/" + postId)
+    },
+
     getPostShred: function(id) {
         return axios.get("/api/posts/" + id);
     },
