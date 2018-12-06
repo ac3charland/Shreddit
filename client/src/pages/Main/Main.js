@@ -22,7 +22,7 @@ class Main extends Component {
     }
 
     getAllShreds = () => {
-        API.getAllShreds()
+        return API.getAllShreds()
             .then(res => {
                 console.log(res.data);
                 this.setState({shreds: res.data})
@@ -39,7 +39,7 @@ class Main extends Component {
         }
 
         API.vote(data, id)
-            .then(this.getAllShreds())
+            .then(() => this.getAllShreds())
             .catch(err => console.log(err));
     }
 

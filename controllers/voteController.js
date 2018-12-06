@@ -19,7 +19,7 @@ module.exports = {
                 "$push": { "voters": req.body.username }
             }
         )
-        .then(dbModel => console.log(dbModel))
+        .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     }
     
