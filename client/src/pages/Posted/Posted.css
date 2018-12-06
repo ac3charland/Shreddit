@@ -1,7 +1,12 @@
-.title {
+.title,
+.defaultText {
     color: white;
 }
 
 .comment-area {
     color: white !important;
+}
+
+.postedbtn {
+    background-color: #5ad1e6 !important;
 }
