@@ -128,7 +128,7 @@ class Posted extends Component {
                             </div>
                         </div>
                         <button onClick={this.postComment} className="btn waves-effect waves-light right postedbtn" type="submit" name="action">
-                            Submit <i className="material-icons right">send</i>
+                            Submit <i class="fas fa-chevron-circle-right"></i>
                         </button>
                     </div>
                 </form>
