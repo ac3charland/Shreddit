@@ -37,22 +37,18 @@ class Register extends React.Component {
 
         API.saveUser({ user: user })
             .then(function(res){
-                alert("a")
                 if (res.data.user) {
                     currentComp.setState({registered: true})
-                    console.log("inside if")
                     // route to main page
                     // return <Redirect to='/'  />
                     //return <Redirect to='/'/>
                     currentComp.setState({readyToRedirect: true})
-                } else {
-                    alert("else")
-                }
+                } 
             })
     }
 
     render(){
-        return( this.state.readyToRedirect?<Redirect to='/Profile'/> : <Modal
+        return( this.state.readyToRedirect?<Redirect to='/'/> : <Modal
                 id="RegisterModal"
                 header='Register'>
                 <form>

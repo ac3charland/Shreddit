@@ -46,7 +46,7 @@ class Posted extends Component {
     }
 
     cellphone = comment => {
-        API.postComment({ comment: comment }, props.match.params.postId)
+        API.postComment({ comment: comment }, this.props.match.params.postId)
     }
 
     upvote = (id, votes) => {
