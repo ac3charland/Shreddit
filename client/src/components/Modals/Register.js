@@ -9,7 +9,7 @@ class Register extends React.Component {
         username: "",
         password: "",
         registered: false,
-        readyToRedirect: false,
+        readyToRedirect: false
     }
 
     handleInputChange = event => {

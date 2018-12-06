@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Modal } from 'react-materialize';
 import API from "../../utils/API";
+import  { Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
     //when saving password, add simple encoding
@@ -8,6 +9,7 @@ class Login extends React.Component {
     state = {
         username: "",
         password: "",
+        readyToRedirect: false
     }
 
     handleInputChange = event => {
@@ -19,8 +21,10 @@ class Login extends React.Component {
 
     // Function to login user using passport POST (api/users/login) function
     loginUser = (event) => {
-        
         event.preventDefault();
+
+        // Get current component here to access in tricky scope area
+        let currentComp = this;
 
         let user = {
             username: this.state.username,
@@ -39,9 +43,13 @@ class Login extends React.Component {
         // Res includes user obj with id, un and token
         API.loginUser({ user: user })
             .then(function(res){
-                console.log("res from login: ", res.data.user);
-                // Saving token in localStorage
-                localStorage.setItem("token", res.data.user.token);
+                // If res contains user
+                if (res.data.user) {
+                    // Saving token in localStorage
+                    localStorage.setItem("token", res.data.user.token);
+                    // Setting state to redirect on re-render
+                    currentComp.setState({readyToRedirect: true});
+                }
             })
     }
 
@@ -50,8 +58,7 @@ class Login extends React.Component {
     }
 
     render(){
-        return(
-            <Modal
+        return( this.state.readyToRedirect?<Redirect to='/Profile'/> : <Modal
                 id="logInModal"
                 header='Login'>
                 <form>
