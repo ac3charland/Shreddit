@@ -19,40 +19,52 @@ class Register extends React.Component {
         })
     }
 
+    // Function to save new user in db
     saveUser = (event) => {
         event.preventDefault();
 
+        // Get current component here to access in tricky scope area
         let currentComp = this;
-        alert(currentComp.state.registered)
 
         let user = {
             username: this.state.username,
             password: this.state.password
         }
 
+        // Encoding password for saving in localStorage
         let passwordLS = "ac" + user.password + "x0!"
 
+        // Saving un and pw in localStorage
         localStorage.setItem("username", user.username);
         localStorage.setItem("password", passwordLS);
 
+
+        // Function to make api call to save new user
+        // Req includes user obj with un and pw
+        // Res includes user obj with id, un and token
         API.saveUser({ user: user })
-            .then(function(res){
-                alert("a")
-                if (res.data.user) {
-                    currentComp.setState({registered: true})
-                    console.log("inside if")
-                    // route to main page
-                    // return <Redirect to='/'  />
-                    //return <Redirect to='/'/>
-                    currentComp.setState({readyToRedirect: true})
-                } else {
-                    alert("else")
-                }
-            })
+        .then(function(res){
+            if (res.data.user) {
+
+                // Save token in localStorage
+                localStorage.setItem("token", res.data.user.token);
+
+                currentComp.setState({registered: true})
+
+                // Setting state to trigger redirect
+
+                currentComp.setState({readyToRedirect: true})
+
+                window.location.reload();
+            }
+        })
+
+       
+
     }
 
     render(){
-        return( this.state.readyToRedirect?<Redirect to='/Profile'/> : <Modal
+        return( this.state.readyToRedirect?<Redirect to='/'/> : <Modal
                 id="RegisterModal"
                 header='Register'>
                 <form>

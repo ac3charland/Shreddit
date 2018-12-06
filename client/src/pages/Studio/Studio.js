@@ -19,7 +19,14 @@ class Studio extends Component {
 
     state = {
         user_id: "user",
+        username: "",
         matrix: this.startingMatrix
+
+    }
+
+    componentDidMount() {
+        const username = localStorage.getItem("username");
+        this.setState({username: username})
 
     }
 
@@ -29,9 +36,10 @@ class Studio extends Component {
 
     save = () => {
         // before saving to db, make sure saving current matrix
-
         API.saveShred({
             // user_id: this.state.user_id,
+
+            username: localStorage.getItem("username"),
             matrix: this.state.matrix
         })
         .then(res => console.log(res))

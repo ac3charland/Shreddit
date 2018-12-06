@@ -7,6 +7,9 @@ router.route("/")
     .get(postController.findAll)
     .post(postController.create);
 
+router.route("/user/:username")
+    .get(postController.findByUsername);
+
 router.route("/:postId")
     .get(postController.findById)
     .put(postController.update)
