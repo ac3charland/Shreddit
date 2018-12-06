@@ -57,20 +57,6 @@ class Register extends React.Component {
                 id="RegisterModal"
                 header='Register'>
                 <form>
-                    {/* <div class="row">
-                        <div class="col s12">
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input id="first_name" type="text" class="validate"/>
-                                    <label for="first_name">First Name</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input id="last_name" type="text" class="validate"/>
-                                    <label for="last_name">Last Name</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
                     <div className="row">
                         <div className="input-field col s12">
                             <input id="username" type="text" className="validate" name="username" onChange={this.handleInputChange} value={this.state.username}/>
