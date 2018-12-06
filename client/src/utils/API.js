@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-    vote: function(votes, id){
-        return axios.put("/api/votes/" + id, votes);
+    vote: function(data, id){
+        return axios.put("/api/votes/" + id, data);
     },
 
     saveShred: function(shredData) {
