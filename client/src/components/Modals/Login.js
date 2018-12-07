@@ -45,11 +45,17 @@ class Login extends React.Component {
             .then(function(res){
                 // Saving token in localStorage 
                 localStorage.setItem("token", res.data.user.token);
+                // Set forceLogout to false
+                localStorage.setItem("forceLogout", "false");
                 // Reload window to update navbar
                 window.location.reload();
                 // Set state to cause redirect
                 currentComp.setState({readyToRedirect: true})
-            })
+            }).catch(function(err) { 
+                if (err) {
+                    alert("Invalid combination. Please try again.");
+                }
+            });
     }
 
     render(){

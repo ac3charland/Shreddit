@@ -22,7 +22,8 @@ class Navbar extends React.Component {
 
     authenticate = () => {
         const authenticated = localStorage.getItem("token");
-        if (authenticated) {
+        const forceLogout = localStorage.getItem("forceLogout")
+        if (authenticated && forceLogout !== "true") {
             this.setState({ loggedin: true });
         }
         else {
