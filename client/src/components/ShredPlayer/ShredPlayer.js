@@ -7,7 +7,7 @@ class ShredPlayer extends React.Component {
     
     state = {
         isPlaying: false,
-        icon: "play_arrow",
+        icon: "fa-play",
         playerWidth: 600,
         matrix: [
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -112,13 +112,13 @@ class ShredPlayer extends React.Component {
             this.sequencer.start();
             this.setState({
                 'isPlaying': true,
-                'icon': 'pause'
+                'icon': 'fa-pause'
             })
         } else {
             this.sequencer.stop();
             this.setState({
                 'isPlaying': false,
-                'icon': 'play_arrow'
+                'icon': 'fa-play'
             })
         }
     }
@@ -128,7 +128,7 @@ class ShredPlayer extends React.Component {
             <div className="player">
                 <div id={this.props.id}></div>
 
-                <div className="play button btn-floating btn-large cyan lighten-2" onClick={this.playButtonClicked}><i className="fas fa-play"></i></div>
+                <div className="play button btn-floating btn-large cyan lighten-2" onClick={this.playButtonClicked}><i className={"fas " + this.state.icon}></i></div>
 
             </div>
         )
