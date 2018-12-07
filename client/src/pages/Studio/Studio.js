@@ -56,17 +56,30 @@ class Studio extends Component {
     }
 
     save = () => {
-        let shortenedMatrix = this.encoding();
-        console.log(shortenedMatrix);
-        // before saving to db, make sure saving current matrix
-        console.log(this.state.title);
-        API.saveShred({
-            username: localStorage.getItem("username"),
-            matrix: this.state.matrix,
-            title: this.state.title
-        })
-        .then(res => {this.setState({ readyToRedirect: true })})
-        .catch(err => console.log(err));
+        if (this.state.title){
+            let shortenedMatrix = this.encoding();
+            console.log(shortenedMatrix);
+            // before saving to db, make sure saving current matrix
+            console.log(this.state.title);
+            API.saveShred({
+                username: localStorage.getItem("username"),
+                matrix: this.state.matrix,
+                title: this.state.title
+            })
+            .then(res => {this.setState({ readyToRedirect: true })})
+            .catch(err => console.log(err));
+        } else {
+            let shortenedMatrix = this.encoding();
+            console.log(shortenedMatrix);
+            // before saving to db, make sure saving current matrix
+            console.log(this.state.title);
+            API.saveShred({
+                username: localStorage.getItem("username"),
+                matrix: this.state.matrix,
+            })
+            .then(res => {this.setState({ readyToRedirect: true })})
+            .catch(err => console.log(err));
+        }
     }
 
     handleInputChange = event => {

@@ -3,7 +3,7 @@
     color: black;
 }
 .profileImg {
-    padding: 2rem;
+    padding: 2rem 0rem 2rem 1rem;
     max-height: 10rem;
     filter: hue-rotate(215deg);
 }
