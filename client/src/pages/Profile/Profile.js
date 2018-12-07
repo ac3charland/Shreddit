@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./Profile.css"
-//import UserBio from "../../components/UserBio";
+import UserBio from "../../components/UserBio";
 import Shred from "../../components/Shred";
 import Banner from "../../components/Banner";
-import API from "../../utils/API"
+import API from "../../utils/API";
 
 class Profile extends Component {
 
@@ -59,16 +59,21 @@ class Profile extends Component {
     }
 
     render(){
+        let joinDate = localStorage.getItem("join");
+
         return (
-            
             <div>
                 <div>
                     <Banner/>
                 </div>
-
                 <div className="container title-area">
-                    <h2>{this.state.username}'s Shreds</h2>
+                    {/* <h2>{this.state.username}'s Shreds</h2> */}
                     <div className="row">
+                        <div className="col s12">
+                        <UserBio
+                            username={this.state.username}
+                            joinDate={joinDate} />
+                        </div>
                         <div className="col s12">
                         {this.state.shreds.length ? (
                             this.state.shreds.map(shred => (

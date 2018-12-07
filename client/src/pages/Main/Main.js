@@ -38,9 +38,13 @@ class Main extends Component {
             username: user
         }
 
+        let authenticated = localStorage.getItem("token");
+
+        if (authenticated !== undefined || authenticated !== null) {
         API.vote(data, id)
             .then(() => this.getAllShreds())
             .catch(err => console.log(err));
+        }
     }
 
     walkieTalkie = matrix => {

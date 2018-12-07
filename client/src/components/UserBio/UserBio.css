@@ -1,12 +1,9 @@
 .bioCard {
-    margin-top: 20px;
+    background-color: white;
+    color: black;
 }
 .profileImg {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 15px;
-}
-.info {
-    padding: 10px;
+    padding: 2rem;
+    max-height: 10rem;
+    filter: hue-rotate(215deg);
 }

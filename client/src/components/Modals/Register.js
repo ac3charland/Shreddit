@@ -31,8 +31,15 @@ class Register extends React.Component {
             password: this.state.password
         }
 
+        var joinDate = new Date().toLocaleDateString('en-GB', {  
+            day : 'numeric',
+            month : 'short',
+            year : 'numeric'
+        });
+
         // Saving un in localStorage
         localStorage.setItem("username", user.username);
+        localStorage.setItem("join", joinDate);
 
         // Function to make api call to save new user
         // Req includes user obj with un and pw
