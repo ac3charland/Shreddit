@@ -79,8 +79,10 @@ class Studio extends Component {
             // before saving to db, make sure saving current matrix
             console.log(this.state.title);
 
+            // Get token from localStorage
             let token = localStorage.getItem("token");
-            // Check current route to authorize
+
+            // Check current route to authorize, save shred or redirect to log in
             API.current(token)
             .then(function(res) {
                 if (res.data.user.token) {
@@ -94,7 +96,13 @@ class Studio extends Component {
                 }
             }).catch(err => {
                 if (err) {
+                    // Set forceLogout in localStor to force logout when navbar reloads
+                    localStorage.setItem("forceLogout", "true");
+                    // Direct user to log in
                     alert("Please log in to save a shred");
+                    // Reload window to mount navbar
+                    window.location.reload();
+                    // Redirect to home
                     cc.setState({ redirectToHome: true });
                 }
             });

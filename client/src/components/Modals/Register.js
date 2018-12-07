@@ -49,6 +49,8 @@ class Register extends React.Component {
             if (res.data.user) {
                 // Save token in localStorage
                 localStorage.setItem("token", res.data.user.token);
+                // Set forceLogout to false
+                localStorage.setItem("forceLogout", "false");
                 // Set state.registered to true
                 currentComp.setState({registered: true})
                 // Set state.readyToRedirect to true, to trigger redirect
