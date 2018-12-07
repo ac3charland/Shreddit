@@ -5,7 +5,7 @@
 
 Shreddit is an in-browser application that allows users to create melodies in the Shreddit Studio and share them with the world!
 
-<!-- Check it out [here](deployed link) -->
+Check it out [here](https://shredditmern.herokuapp.com/)
 
 ---
 ### How to Shred
@@ -19,6 +19,7 @@ Creating a new Shred is simple! Just go to the Studio page, click on the boxes t
 * Comment on Shreds to let users know what you think
 * Vote up or down for your favorite Shreds
 * Check out your User page to find all of the Shreds that you have created
+* Go to other User pages to see their Shreds
 
 ---
 ### Developed by:
