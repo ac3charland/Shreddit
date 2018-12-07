@@ -46,6 +46,7 @@ class Navbar extends React.Component {
         console.log("logout");
         localStorage.removeItem("token");
         localStorage.removeItem("password");
+        localStorage.removeItem("username");
         this.setState({ loggedin: false });
         window.location.reload();
         return null;
