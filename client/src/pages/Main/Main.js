@@ -40,6 +40,9 @@ class Main extends Component {
 
         let authenticated = localStorage.getItem("token");
 
+        // Get current component to have 'this' in sticky scope area
+        const cc = this;
+
         // Get token from localStorage
         let token = localStorage.getItem("token");
 
@@ -48,7 +51,7 @@ class Main extends Component {
         .then(function(res) {
             if (res.data.user.token) {
                 API.vote(data, id)
-                    .then(() => this.getAllShreds())
+                    .then(() => cc.getAllShreds())
                     .catch(err => console.log(err));
             }
         }).catch(err => {
@@ -59,6 +62,8 @@ class Main extends Component {
                 alert("Please log in to cast a vote");
                 // Reload window to mount navbar
                 window.location.reload();
+                // Scroll up to top of page for log in
+                window.scrollTo(0, 0);
             }
         });
 
