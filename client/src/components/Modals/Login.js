@@ -68,8 +68,8 @@ class Login extends React.Component {
                         <div className="input-field col s12">
                             <input id="password" type="password" className="validate" name="password" onChange={this.handleInputChange} value={this.state.password}/>
                             <label htmlFor="password">Password</label>
-                            <button onClick={this.loginUser} className="btn waves-effect waves-light" type="submit" name="action">Submit
-                                <i className="material-icons right">send</i>
+                            <button onClick={this.loginUser} className="btn waves-effect waves-light" type="submit" name="action">
+                            Submit  <i class="fas fa-chevron-circle-right"></i>
                             </button> 
                         </div>
                     </div>

@@ -14,7 +14,7 @@ const Shred = props => (
                     </div>
                     <div className="row">
                         <div className="col s12 center-align">
-                            <i className="material-icons arrow" onClick={() => props.vote(props.id, 1)}>arrow_upward</i>
+                        <i class="fas fa-arrow-up arrow" onClick={() => props.vote(props.id, 1)}></i>
                         </div>
                     </div>
                     <div className="row">
@@ -24,7 +24,7 @@ const Shred = props => (
                     </div>
                     <div className="row">
                         <div className="col s12 center-align">
-                            <i className="material-icons arrow" onClick={() => props.vote(props.id, -1)}>arrow_downward</i>
+                        <i class="fas fa-arrow-down arrow" onClick={() => props.vote(props.id, -1)}></i>
                         </div>
                     </div>
                     <div className="row">
