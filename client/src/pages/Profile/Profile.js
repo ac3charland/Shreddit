@@ -9,12 +9,13 @@ class Profile extends Component {
 
     state = {
         username: "",
+        username2: "",
+        otheruser: false,
         joinDate: "11/30/18",
         bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum sed nulla et rutrum. Phasellus interdum ex et lacus pellentesque sodales. Fusce sollicitudin suscipit ligula sit amet dictum. Donec sagittis ligula ut sapien rhoncus interdum. In id purus vel tellus molestie consequat. Aenean commodo ante ac tincidunt tincidunt. Quisque diam odio, elementum sed placerat in, rhoncus sit amet odio. Sed et turpis vel augue fermentum bibendum. Nam congue tortor vel enim molestie vestibulum.",
         shreds: [
             //{id: 1, shred: "Shred1", votes: 120}, {id: 2, shred: "Shred2", votes: 30}, {id: 3, shred:"Shred3", votes: 80}
         ],
-        otheruser: false,
     }
 
     componentDidMount(){
@@ -23,17 +24,20 @@ class Profile extends Component {
         
         this.setState({username: username, otheruser: otheruser}, () => {
             if(otheruser){
-                this.setState({username: otheruser}, () => {
+                this.setState({username2: otheruser}, () => {
                     this.getUserShreds(otheruser);
                 })  
             } else {
-                this.getUserShreds(username);
+                this.setState({username2: username}, () => {
+                    this.getUserShreds(username);
+                })
+                
             }
         })
     }
 
     getUserShreds = (username) => {
-        API.getUserShreds(username)
+        return API.getUserShreds(username)
             .then(res => {
                 console.log(res.data);
                 this.setState({shreds: res.data})
@@ -50,7 +54,7 @@ class Profile extends Component {
         }
 
         API.vote(data, id)
-            .then(this.getAllShreds())
+            .then(() => this.getUserShreds(this.state.username2))
             .catch(err => console.log(err));
     }
 
@@ -71,7 +75,7 @@ class Profile extends Component {
                     <div className="row">
                         <div className="col s12">
                         <UserBio
-                            username={this.state.username}
+                            username={this.state.username2}
                             joinDate={joinDate} />
                         </div>
                         <div className="col s12">

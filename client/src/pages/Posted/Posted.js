@@ -109,6 +109,7 @@ class Posted extends Component {
             <>
             <div className="container title">
                 <h2>{this.state.shred.username}'s Shred</h2>
+                <h6><a href={"/profile/" + this.state.shred.username}>View {this.state.shred.username}'s Profile</a></h6>
                 <h5>{this.state.shred.title}</h5>
                 <div className="row">
                     <div className="col s12">

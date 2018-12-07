@@ -20,6 +20,7 @@ var post = new Schema ({
 
     title: {
         type: String,
+        default: "Untitled"
     },
 
     username: {
