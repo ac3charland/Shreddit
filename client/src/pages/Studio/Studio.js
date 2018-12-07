@@ -110,11 +110,11 @@ class Studio extends Component {
                             </div>
                             <div className="row">
                                 <div className="col s12 center-align">
-                                    <button class="btn waves-effect waves-light studiobtn" onClick={this.save}>Save
-                                        <i class="material-icons right">save</i>
+                                    <button class="btn waves-effect waves-light studiobtn" onClick={this.save}>
+                                    Save   <i class="fas fa-save"></i>
                                     </button>
-                                    <button class="btn waves-effect waves-light studiobtn" onClick={this.clear}>Clear
-                                        <i class="material-icons right">delete</i>
+                                    <button class="btn waves-effect waves-light studiobtn" onClick={this.clear}>
+                                    Clear  <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </div>
                             </div>
