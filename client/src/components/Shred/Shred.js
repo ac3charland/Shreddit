@@ -7,7 +7,7 @@ const Shred = props => (
         <div className="col s12">
             <div className="row">
                 <div className="col s2 votes">
-                    <div classNmae="row">
+                    <div className="row">
                         <div className="col s12 username center-align">
                             <h6>By: <a href={"/profile/" + props.username}>{props.username}</a></h6>
                         </div>
@@ -30,7 +30,7 @@ const Shred = props => (
                     <div className="row">
                         <div className="col links s12 center-align">
                             <h6><a href={"/posted/" + props.shred_id}>Comments</a></h6>
-                            <h6><a href=""> Share</a></h6>
+                            {/* <h6><a href=""> Share</a></h6> */}
                         </div>
                     </div>
                 </div>
