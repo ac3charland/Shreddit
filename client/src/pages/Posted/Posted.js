@@ -102,7 +102,7 @@ class Posted extends Component {
         let authenticated = localStorage.getItem("token");
 
         if (authenticated !== undefined || authenticated !== null) {
-            submitComment = <><button onClick={this.postComment} className="btn waves-effect waves-light right postedbtn" type="submit" name="action">Submit <i className="material-icons right">send</i></button></>
+            submitComment = <><button onClick={this.postComment} className="btn waves-effect waves-light right postedbtn" type="submit" name="action">Submit  <i class="fas fa-chevron-circle-right"></i></button></>
         }
 
         return (
