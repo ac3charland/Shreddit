@@ -26,7 +26,8 @@ class Studio extends Component {
         username: "",
         matrix: this.startingMatrix,
         title: "",
-        readyToRedirect: false
+        redirectToProfile: false,
+        redirectToHome: false
     }
 
     //BinaryMath - encoding strings
@@ -56,6 +57,10 @@ class Studio extends Component {
     }
 
     save = () => {
+
+        // Get current component to have 'this' in sticky scope area
+        const cc = this;
+
         if (this.state.title){
             let shortenedMatrix = this.encoding();
             console.log(shortenedMatrix);
@@ -66,19 +71,33 @@ class Studio extends Component {
                 matrix: this.state.matrix,
                 title: this.state.title
             })
-            .then(res => {this.setState({ readyToRedirect: true })})
+            .then(res => {this.setState({ redirectToProfile: true })})
             .catch(err => console.log(err));
         } else {
             let shortenedMatrix = this.encoding();
             console.log(shortenedMatrix);
             // before saving to db, make sure saving current matrix
             console.log(this.state.title);
-            API.saveShred({
-                username: localStorage.getItem("username"),
-                matrix: this.state.matrix,
-            })
-            .then(res => {this.setState({ readyToRedirect: true })})
-            .catch(err => console.log(err));
+
+            let token = localStorage.getItem("token");
+            // Check current route to authorize
+            API.current(token)
+            .then(function(res) {
+                if (res.data.user.token) {
+                    API.saveShred({
+                        username: localStorage.getItem("username"),
+                        matrix: cc.state.matrix,
+                        title: cc.state.title
+                    })
+                    .then(res => {cc.setState({ redirectToProfile: true })})
+                    .catch(err => console.log(err));
+                }
+            }).catch(err => {
+                if (err) {
+                    alert("Please log in to save a shred");
+                    cc.setState({ redirectToHome: true });
+                }
+            });
         }
     }
 
@@ -94,8 +113,9 @@ class Studio extends Component {
         window.location.reload();
     }
 
-    render(){
-        return ( this.state.readyToRedirect?<Redirect to='/Profile'/> : <div>
+    render() {
+        return ( this.state.redirectToProfile?<Redirect to='/Profile'/> : this.state.redirectToHome?<Redirect to='/'/> : 
+        <div>
                 <div>
                     <Banner />
                 </div>
@@ -138,5 +158,6 @@ class Studio extends Component {
         )
     }
 }
+
 
 export default Studio;
