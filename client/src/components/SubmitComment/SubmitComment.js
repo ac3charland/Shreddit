@@ -15,8 +15,8 @@ const submitComment = props => (
                     </div>
                 </div>
             </div>
-            <button onClick={props.postComment} className="btn waves-effect waves-light" type="submit" name="action">Submit
-                <i className="material-icons right">send</i>
+            <button onClick={props.postComment} className="btn waves-effect waves-light" type="submit" name="action">
+            Submit  <i class="fas fa-chevron-circle-right"></i>
             </button>
         </div>
     </form>
