@@ -40,11 +40,29 @@ class Main extends Component {
 
         let authenticated = localStorage.getItem("token");
 
-        if (authenticated !== undefined || authenticated !== null) {
-        API.vote(data, id)
-            .then(() => this.getAllShreds())
-            .catch(err => console.log(err));
-        }
+        // Get token from localStorage
+        let token = localStorage.getItem("token");
+
+        // Check current route to authorize, cast vote or redirect to log in
+        API.current(token)
+        .then(function(res) {
+            if (res.data.user.token) {
+                API.vote(data, id)
+                    .then(() => this.getAllShreds())
+                    .catch(err => console.log(err));
+            }
+        }).catch(err => {
+            if (err) {
+                // Set forceLogout in localStor to force logout when navbar reloads
+                localStorage.setItem("forceLogout", "true");
+                // Direct user to log in
+                alert("Please log in to cast a vote");
+                // Reload window to mount navbar
+                window.location.reload();
+            }
+        });
+
+        
     }
 
     walkieTalkie = matrix => {
