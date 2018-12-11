@@ -6,7 +6,8 @@ var comment = new Schema({
     
     body: {
         type: String,
-        trim: true
+        trim: true,
+        required: true
     },
 
     user_id: [
