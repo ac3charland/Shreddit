@@ -2,6 +2,8 @@ body {
     display: flex;
     min-height: 125vh;
     flex-direction: column;
+    position: relative;
+    padding-bottom: 100px;
 }
 
 main {
@@ -12,11 +14,13 @@ main {
     background-color: darkslategrey !important;
     padding: .5rem;
     font-family: 'Roboto Slab', serif;
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     left: 0px;
     width: 100%;
+    height: 60px;
     z-index: 1;
+    margin-top: 20px;
 }
 
 .page-footer a:link {
