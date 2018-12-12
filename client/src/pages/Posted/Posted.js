@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Posted.css";
-import SubmitComment from "../../components/SubmitComment";
+// import SubmitComment from "../../components/SubmitComment";
 import CommentBox from "../../components/CommentBox";
 import ShredPlayer from "../../components/ShredPlayer";
 import API from "../../utils/API";
@@ -133,7 +133,7 @@ class Posted extends Component {
             <>
             <div className="container title">
                 <h2>{this.state.shred.username}'s Shred</h2>
-                <h6><a href={"/profile/" + this.state.shred.username}>View {this.state.shred.username}'s Profile</a></h6>
+                <h6 className="profile-link"><a href={"/profile/" + this.state.shred.username}>View {this.state.shred.username}'s Profile</a></h6>
                 <h5>{this.state.shred.title}</h5>
                 <div className="row">
                     <div className="col s12">

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Modal } from 'react-materialize';
 import API from "../../utils/API";
 import  { Redirect } from 'react-router-dom';
@@ -77,7 +77,7 @@ class Register extends React.Component {
                             <input id="password" type="password" className="validate" name="password" onChange={this.handleInputChange} value={this.state.password}/>
                             <label htmlFor="password">Password</label>
                             <button onClick={this.saveUser} className="btn waves-effect waves-light" type="submit" name="action">
-                            Submit  <i class="fas fa-chevron-circle-right"></i>
+                            Submit  <i className="fas fa-chevron-circle-right"></i>
                             </button> 
                         </div>
                     </div>
