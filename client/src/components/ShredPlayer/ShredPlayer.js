@@ -83,6 +83,7 @@ class ShredPlayer extends React.Component {
         }
 
         const exportMatrix = (matrix) => {
+            
             let exportArray = [];
 
             matrix.map((row) => {
