@@ -57,13 +57,17 @@ class ShredPlayer extends React.Component {
 
         // Plays all the notes at a step in the sequencer
         const stepToSound = (stepArray) => {
-            var notesToPlay = [];
-            for (var i = 0; i < stepArray.length; i++) {
-                var note = this.notes[i];
-                if (stepArray[i] === 1) {
+            const currentComponent = this;
+            
+            let notesToPlay = [];
+            
+            stepArray.map((square, index) => {
+                if (square === 1) {
+                    const note = currentComponent.notes[index];
                     notesToPlay.push(note);
                 }
-            }
+            });
+
             this.synth.triggerAttackRelease(notesToPlay, '8n')
         }
 
@@ -80,17 +84,19 @@ class ShredPlayer extends React.Component {
 
         const exportMatrix = (matrix) => {
             let exportArray = [];
-            for (let i = 0; i < matrix.length; i++) {
-                let row = [];
-                for (let j = 0; j < matrix[i].length; j++) {
-                    if (matrix[i][j]) {
-                        row.push(1);
+
+            matrix.map((row) => {
+                let exportRow = [];
+                row.map((cell) => {
+                    if (cell) {
+                        exportRow.push(1);
                     } else {
-                        row.push(0);
+                        exportRow.push(0);
                     }
-                }
-                exportArray.push(row);
-            }
+                });
+                exportArray.push(exportRow);
+            })
+
             return exportArray;
         }
 
