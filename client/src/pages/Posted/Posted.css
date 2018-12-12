@@ -14,3 +14,15 @@ body {
 .postedbtn {
     background-color: #5ad1e6 !important;
 }
+
+.profile-link a:link {
+    color: turquoise;
+}
+
+.profile-link a:visited {
+    color: darkcyan;
+}
+
+.profile-link a:hover {
+    color: turquoise;
+}
