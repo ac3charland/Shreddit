@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import Banner from "../../components/Banner";
 import Shred from "../../components/Shred";
-//import ShredPlayer from "../../components/ShredPlayer";
+import Welcome from "../../components/Modals/Welcome"
 import API from "../../utils/API"
 import "./Main.css";
+import M from "materialize-css/dist/js/materialize.min.js";
+import "materialize-css/dist/css/materialize.min.css";
+
 
 class Main extends Component {
 
@@ -19,6 +22,7 @@ class Main extends Component {
         this.decoding();        
         const username = localStorage.getItem("username");
         this.setState({username: username})
+        this.welcome();
     }
 
     getAllShreds = () => {
@@ -98,12 +102,40 @@ class Main extends Component {
         }
     }
 
+   readCookie = (name) => {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === " ") c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) {
+            return c.substring(nameEQ.length, c.length);
+        }
+    }
+    return null;
+}
+
+
+    welcome = () => {
+        console.log("Running this.welcome()")
+        console.log(this.readCookie("visited"));
+        // if (!this.readCookie("visited")) {
+        //     console.log("Should be opening modal...")
+        //     var modal = window.$("#welcomeModal");
+        //     modal.modal("open");
+        //     document.cookie = "visited=true";
+        // }
+        var modal = window.$("#welcomeModal");
+        modal.modal("open");
+    }
+
     render(){
         return (
             <div>
                 <div>
                     <Banner/>
                 </div>
+                <Welcome/>
                 <div className="container">
                     <div className="row">
 
