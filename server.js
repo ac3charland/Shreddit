@@ -52,7 +52,7 @@ app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave
 
 
 //Configure Mongoose
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shreddit');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/shreddit', { useNewUrlParser: true });
 mongoose.set('debug', true);
 
 //Models & routes

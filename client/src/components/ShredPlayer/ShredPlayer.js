@@ -28,12 +28,12 @@ class ShredPlayer extends React.Component {
 
     resizePlayer = () => {
         const playerWidth = document.getElementsByClassName("player")[0].parentElement.clientWidth - 16;
-
         this.sequencer = new Nexus.Sequencer('#' + this.props.id, {
             'size': [playerWidth, 200],
             'mode': 'toggle',
             'rows': 6,
-            'columns': 16
+            'columns': 16,
+            'counter': new Nexus.Counter(0,15)
         });
     }
 
@@ -103,11 +103,19 @@ class ShredPlayer extends React.Component {
 
 
         this.sequencer.on('change', function (cell) {
+            // Resume audio context
+            if (Tone.context.state !== 'running') {
+                Tone.context.resume();
+            }
             changeToSound(cell);
             sendMatrix(exportMatrix(this.matrix.pattern))
         });
 
         this.sequencer.on('step', function (stepArray) {
+            // Resume audio context
+            if (Tone.context.state !== 'running') {
+                Tone.context.resume();
+            }
             stepToSound(stepArray);
         });
     }
@@ -116,6 +124,8 @@ class ShredPlayer extends React.Component {
 
     playButtonClicked = () => {
         if (this.state.isPlaying === false) {
+            console.log("this.sequencer.start():")
+            console.log(this.sequencer.start);
             this.sequencer.start();
             this.setState({
                 'isPlaying': true,
