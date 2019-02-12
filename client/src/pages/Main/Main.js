@@ -63,7 +63,7 @@ class Main extends Component {
                 // Set forceLogout in localStor to force logout when navbar reloads
                 localStorage.setItem("forceLogout", "true");
                 // Direct user to log in
-                alert("Please log in to cast a vote");
+                alert("Please log in to cast a vote.");
                 // Reload window to mount navbar
                 window.location.reload();
                 // Scroll up to top of page for log in
