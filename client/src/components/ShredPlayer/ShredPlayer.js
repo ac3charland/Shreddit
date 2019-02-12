@@ -33,7 +33,7 @@ class ShredPlayer extends React.Component {
             'mode': 'toggle',
             'rows': 6,
             'columns': 16,
-            'counter': new Nexus.Counter(0,15)
+            // 'counter': new Nexus.Counter(0,15)
         });
     }
 
@@ -104,6 +104,7 @@ class ShredPlayer extends React.Component {
             // Resume audio context
             if (Tone.context.state !== 'running') {
                 Tone.context.resume();
+                Nexus.context = Tone.context;
             }
             changeToSound(cell);
             sendMatrix(exportMatrix(this.matrix.pattern))
@@ -113,6 +114,7 @@ class ShredPlayer extends React.Component {
             // Resume audio context
             if (Tone.context.state !== 'running') {
                 Tone.context.resume();
+                Nexus.context.resume();
             }
             stepToSound(stepArray);
         });
