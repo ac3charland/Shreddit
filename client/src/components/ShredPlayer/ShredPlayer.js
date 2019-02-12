@@ -50,8 +50,6 @@ class ShredPlayer extends React.Component {
         this.sequencer.colorize("accent", "#4dd0e1");
 
         const sendMatrix = matrix => {
-            console.log("matrix inside sendMatrix(): ");
-            console.log(matrix);
             this.props.walkieTalkie(matrix)
         }
 
@@ -124,8 +122,6 @@ class ShredPlayer extends React.Component {
 
     playButtonClicked = () => {
         if (this.state.isPlaying === false) {
-            console.log("this.sequencer.start():")
-            console.log(this.sequencer.start);
             this.sequencer.start();
             this.setState({
                 'isPlaying': true,

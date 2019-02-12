@@ -117,16 +117,12 @@ class Main extends Component {
 
 
     welcome = () => {
-        console.log("Running this.welcome()")
-        console.log(this.readCookie("visited"));
-        // if (!this.readCookie("visited")) {
-        //     console.log("Should be opening modal...")
-        //     var modal = window.$("#welcomeModal");
-        //     modal.modal("open");
-        //     document.cookie = "visited=true";
-        // }
-        var modal = window.$("#welcomeModal");
-        modal.modal("open");
+        if (!this.readCookie("visited")) {
+            console.log("Should be opening modal...")
+            var modal = window.$("#welcomeModal");
+            modal.modal("open");
+            document.cookie = "visited=true";
+        }
     }
 
     render(){
