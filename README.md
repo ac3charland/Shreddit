@@ -3,7 +3,7 @@
 
 ### Product Description
 
-Shreddit is an in-browser application that allows users to create melodies in the Shreddit Studio and share them with the world!
+Shreddit is an in-browser application that allows users to create melodies in the Shreddit Studio and share them with the world! It is the capstone project of a team of University of Minnesota Coding Bootcamp students, listed below.
 
 Check it out [here](https://shredditmern.herokuapp.com/)
 
@@ -11,8 +11,6 @@ Check it out [here](https://shredditmern.herokuapp.com/)
 ### How to Shred
 
 Creating a new Shred is simple! Just go to the Studio page, click on the boxes to select notes, and save your Shred to add it to the feed.
-
-![A .gif displaying the Studio funcitonality](https://media.giphy.com/media/5hvRvBtI2CXQU6qXoF/giphy.gif)
 
 ### Additional Features
 
